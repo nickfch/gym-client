@@ -1,0 +1,1 @@
+export { UpcomingWorkoutsFeed } from './UpcomingWorkoutsCard';
