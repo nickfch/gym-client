@@ -17,14 +17,6 @@ import { WorkoutActions } from './components/WorkoutActions';
 import { styles } from './WorkoutScreen.styles';
 import { WorkoutScreenProps, WorkoutScreenState } from './WorkoutScreen.types';
 
-const BASE_URL = 'basehost/api';
-
-// API service for workouts
-const fetchWorkouts = async () => {
-  const response = await axios.get(`${BASE_URL}/workouts`);
-  return response.data;
-};
-
 export const WorkoutScreen: React.FC<WorkoutScreenProps> = ({
   navigation,
   route,

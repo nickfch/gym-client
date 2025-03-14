@@ -42,7 +42,7 @@ export const ExerciseSelectionList: React.FC<ExerciseSelectionListProps> = ({
   });
 
   // Render individual exercise item
-  const renderExerciseItem = ({ item }: any) => (
+  const renderExerciseItem = ({ item }: { item: Exercise }) => (
     <TouchableOpacity
       style={styles.exerciseItem}
       onPress={() => onSelectExercise(item)}

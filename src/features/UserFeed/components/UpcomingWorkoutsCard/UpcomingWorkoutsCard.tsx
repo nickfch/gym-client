@@ -1,6 +1,6 @@
 import React from 'react';
-import { FeedCard } from '../FeedCard';
-import { CardHeader } from '../CardHeader';
+import { FeedCard } from '../../../../components/FeedCard';
+import { CardHeader } from '../../../../components/CardHeader';
 import { WorkoutListItem } from '../WorkoutListItem';
 import { Workout } from 'src/types';
 

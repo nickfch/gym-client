@@ -1,15 +1,18 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 
 import { WeeklyProgress } from 'src/types';
-import { FeedCard } from '../FeedCard';
-import { CardHeader } from '../CardHeader';
+import { CardHeader } from 'src/components/CardHeader';
+import { ProgressBar } from 'src/components/ProgressBar';
+import { FeedCard } from 'src/components/FeedCard';
+
+import { ProgressItem } from './components/ProgressItem';
 
 import { styles } from './WeeklyProgressCard.styles';
 
-interface WeeklyProgressCardProps {
+type WeeklyProgressCardProps = {
   progress: WeeklyProgress;
-}
+};
 
 export const WeeklyProgressCard: React.FC<WeeklyProgressCardProps> = ({
   progress,
@@ -18,41 +21,21 @@ export const WeeklyProgressCard: React.FC<WeeklyProgressCardProps> = ({
     <FeedCard>
       <CardHeader title="Weekly Progress" />
       <View style={styles.progressContainer}>
-        <View style={styles.progressItem}>
-          <View style={styles.progressCircle}>
-            <Text style={styles.progressNumber}>{progress.completed}</Text>
-            <Text style={styles.progressLabel}>/{progress.target}</Text>
-          </View>
-          <Text style={styles.progressText}>Workouts</Text>
-        </View>
-
-        <View style={styles.progressItem}>
-          <View style={styles.progressCircle}>
-            <Text style={styles.progressNumber}>{progress.streak}</Text>
-          </View>
-          <Text style={styles.progressText}>Streak</Text>
-        </View>
-
-        <View style={styles.progressItem}>
-          <View style={styles.progressCircle}>
-            <Text style={styles.progressNumber}>{progress.calories}</Text>
-          </View>
-          <Text style={styles.progressText}>Calories</Text>
-        </View>
+        <ProgressItem name="Workouts">
+          <Text style={styles.progressNumber}>{progress.completed}</Text>
+          <Text style={styles.progressLabel}>/{progress.target}</Text>
+        </ProgressItem>
+        <ProgressItem name="Streak">
+          <Text style={styles.progressNumber}>{progress.streak}</Text>
+        </ProgressItem>
+        <ProgressItem name="Calories">
+          <Text style={styles.progressNumber}>{progress.calories}</Text>
+        </ProgressItem>
       </View>
-
-      {/* Progress Bar */}
-      <View style={styles.progressBarContainer}>
-        <View
-          style={[
-            styles.progressBar,
-            { width: `${(progress.completed / progress.target) * 100}%` },
-          ]}
-        />
-      </View>
-      <Text style={styles.progressBarLabel}>
-        {progress.completed} of {progress.target} workouts completed
-      </Text>
+      <ProgressBar
+        progress={progress.completed / progress.target}
+        label={`${progress.completed} of ${progress.target}`}
+      />
     </FeedCard>
   );
 };

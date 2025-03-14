@@ -1,19 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { FeedCard } from '../FeedCard';
-import { CardHeader } from '../CardHeader';
+
+import { FeedCard } from 'src/components/FeedCard';
+import { CardHeader } from 'src/components/CardHeader';
 import { ExerciseShortCard } from 'src/components/ExerciseShortCard';
 import { formatDate } from 'src/utils/dateFormatters';
-import { Workout } from 'src/types';
 import { MainStack, WorkoutStack } from 'src/constants/navigation';
-
 import { styles } from './NextWorkoutCard.styles';
-
-interface NextWorkoutCardProps {
-  workout: Workout;
-}
+import { NextWorkoutCardProps } from './NextWorkoutCard.types';
 
 export const NextWorkoutCard: React.FC<NextWorkoutCardProps> = ({
   workout,

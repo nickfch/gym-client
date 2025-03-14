@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator();
 
 export const WorkoutStackNavigation = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen
         name={WorkoutStack.WorkoutScreen}
         component={WorkoutScreen}

@@ -6,19 +6,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginVertical: 8,
   },
-  progressItem: {
-    alignItems: 'center',
-  },
-  progressCircle: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    backgroundColor: '#EEF2FF',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: 8,
-    flexDirection: 'row',
-  },
   progressNumber: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -27,17 +14,6 @@ export const styles = StyleSheet.create({
   progressLabel: {
     fontSize: 14,
     color: '#6B7280',
-  },
-  progressText: {
-    fontSize: 14,
-    color: '#4B5563',
-  },
-  progressBarContainer: {
-    height: 8,
-    backgroundColor: '#E5E7EB',
-    borderRadius: 4,
-    marginTop: 16,
-    overflow: 'hidden',
   },
   progressBar: {
     height: '100%',

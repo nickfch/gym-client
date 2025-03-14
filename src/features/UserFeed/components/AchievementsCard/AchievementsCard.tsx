@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { FeedCard } from '../FeedCard';
-import { CardHeader } from '../CardHeader';
+import { FeedCard } from '../../../../components/FeedCard';
+import { CardHeader } from '../../../../components/CardHeader';
 
 import { styles } from './AchievementsCard.styles';
 
