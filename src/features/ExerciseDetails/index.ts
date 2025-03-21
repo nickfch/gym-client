@@ -1,1 +1,0 @@
-export { ExerciseDetailsScreen } from './ExerciseDetails';

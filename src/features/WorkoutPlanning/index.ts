@@ -1,1 +1,0 @@
-export { WorkoutPlanningScreen } from './WorkoutPlanning';

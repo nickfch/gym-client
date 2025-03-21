@@ -1,0 +1,137 @@
+[
+  {
+    "id": 1,
+    "documentId": "doc-123",
+    "name": "Full Body Workout",
+    "duration": 60,
+    "description": "A comprehensive full-body workout routine.",
+    "difficulty": 3,
+    "exercises": [
+      {
+        "id": 1,
+        "documentId": "exercise-123",
+        "name": "Push-ups",
+        "category": "Strength",
+        "sets": 3,
+        "muscle_group": "Chest",
+        "description": "A basic push-up exercise.",
+        "equipment": "No Need",
+        "rest_time": 60,
+        "user_exercises": [],
+        "workouts": [],
+        "video_example": {
+          "id": 1,
+          "documentId": "video-123",
+          "name": "Push-up Tutorial",
+          "url": "https://example.com/pushup-tutorial.mp4"
+        }
+      }
+    ],
+    "type": "Full-Body",
+    "user_workouts": [],
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z",
+    "publishedAt": "2023-01-01T00:00:00.000Z",
+    "createdBy": {
+      "id": 1,
+      "documentId": "user-123"
+    },
+    "updatedBy": {
+      "id": 1,
+      "documentId": "user-123"
+    },
+    "locale": "en",
+    "localizations": [],
+    "completed": false
+  },
+  {
+    "id": 2,
+    "documentId": "doc-456",
+    "name": "Upper Body Workout",
+    "duration": 45,
+    "description": "An intense upper-body workout routine.",
+    "difficulty": 4,
+    "exercises": [
+      {
+        "id": 2,
+        "documentId": "exercise-456",
+        "name": "Pull-ups",
+        "category": "Strength",
+        "sets": 4,
+        "muscle_group": "Back",
+        "description": "A basic pull-up exercise.",
+        "equipment": "Pull-up Bar",
+        "rest_time": 90,
+        "user_exercises": [],
+        "workouts": [],
+        "video_example": {
+          "id": 2,
+          "documentId": "video-456",
+          "name": "Pull-up Tutorial",
+          "url": "https://example.com/pullup-tutorial.mp4"
+        }
+      }
+    ],
+    "type": "Upper Body",
+    "user_workouts": [],
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z",
+    "publishedAt": "2023-01-01T00:00:00.000Z",
+    "createdBy": {
+      "id": 2,
+      "documentId": "user-456"
+    },
+    "updatedBy": {
+      "id": 2,
+      "documentId": "user-456"
+    },
+    "locale": "en",
+    "localizations": [],
+    "completed": false
+  },
+  {
+    "id": 3,
+    "documentId": "doc-789",
+    "name": "Lower Body Workout",
+    "duration": 30,
+    "description": "A quick lower-body workout routine.",
+    "difficulty": 2,
+    "exercises": [
+      {
+        "id": 3,
+        "documentId": "exercise-789",
+        "name": "Squats",
+        "category": "Strength",
+        "sets": 3,
+        "muscle_group": "Legs",
+        "description": "A basic squat exercise.",
+        "equipment": "No Need",
+        "rest_time": 60,
+        "user_exercises": [],
+        "workouts": [],
+        "video_example": {
+          "id": 3,
+          "documentId": "video-789",
+          "name": "Squat Tutorial",
+          "url": "https://example.com/squat-tutorial.mp4"
+        }
+      }
+    ],
+    "type": "Lower Body",
+    "user_workouts": [],
+    "createdAt": "2023-01-01T00:00:00.000Z",
+    "updatedAt": "2023-01-01T00:00:00.000Z",
+    "publishedAt": "2023-01-01T00:00:00.000Z",
+    "createdBy": {
+      "id": 3,
+      "documentId": "user-789"
+    },
+    "updatedBy": {
+      "id": 3,
+      "documentId": "user-789"
+    },
+    "locale": "en",
+    "localizations": [],
+    "completed": true
+  }
+]

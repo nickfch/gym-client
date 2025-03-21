@@ -1,0 +1,11 @@
+{
+  "weekly-progress-card--title": "Weekly Progress",
+  "weekly-progress-card--label": "{{ completed }} of {{ targetGoal }}",
+  "next-workout-card--title": "Next Workout",
+  "next-workout-card--action-text": "Details",
+  "next-workout-card--duration": "{{ duration }} min",
+  "next-workout-card--start-btn": "Start Workout",
+  "upcoming-workouts-card--title": "Upcoming Workouts",
+  "upcoming-workouts-card--action-text": "See All",
+  "user-feed--no-scheduled-workouts-label": "You don't have any upcoming workouts. Plan your next workout now!"
+}

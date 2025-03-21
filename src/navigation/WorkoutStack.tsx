@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { WorkoutStack } from 'src/constants/navigation';
-import { WorkoutScreen } from 'src/features/WorkoutScreen';
-import { WorkoutDetailsScreen } from 'src/features/WorkoutDetails';
-import { WorkoutPlanningScreen } from 'src/features/WorkoutPlanning';
+import { WorkoutScreen } from 'src/screens/WorkoutScreen';
+import { WorkoutDetailsScreen } from 'src/screens/WorkoutDetailsScreen';
+import { WorkoutPlanningScreen } from 'src/screens/WorkoutPlanningScreen';
 
-const Stack = createNativeStackNavigator();
+import { WorkoutStackParamList } from './WorkoutStack.types';
+
+const Stack = createNativeStackNavigator<WorkoutStackParamList>();
 
 export const WorkoutStackNavigation = () => {
   return (

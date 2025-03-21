@@ -1,12 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
 import { MainStack } from 'src/constants/navigation';
-
+import { RootStackParamList } from 'src/types/navigation.d';
 import { MainBottomNavigation } from './MainBottomNavigation';
 import { WorkoutStackNavigation } from './WorkoutStack';
 import { ExerciseNavigation } from './ExerciseNavigation';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const MainNavigation = () => {
   return (
@@ -14,6 +13,7 @@ export const MainNavigation = () => {
       <Stack.Screen
         name={MainStack.MainBottomTab}
         component={MainBottomNavigation}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name={MainStack.WorkoutStack}

@@ -1,0 +1,52 @@
+import { Workout } from 'src/types';
+
+export const mockWorkout: Workout = {
+  id: '1',
+  name: 'Full Body Workout',
+  description: 'Complete full body workout targeting all major muscle groups',
+  duration: 45,
+  difficulty: 5,
+  date: new Date(),
+  completed: false,
+  exercises: [
+    {
+      id: '1',
+      name: 'Barbell Squat',
+      sets: 4,
+      reps: 10,
+      weight: 135,
+      notes: '',
+      muscleGroup: 'Legs',
+      equipment: 'Barbell',
+      completed: false,
+      category: 'Strength',
+      difficulty: 10,
+    },
+    {
+      id: '2',
+      name: 'Bench Press',
+      sets: 3,
+      reps: 12,
+      weight: 95,
+      notes: '',
+      muscleGroup: 'Chest',
+      equipment: 'Barbell',
+      completed: false,
+      category: 'Strength',
+      difficulty: 10,
+    },
+    {
+      id: '3',
+      name: 'Pull-ups',
+      sets: 3,
+      reps: 8,
+      weight: 0, // Updated to match the expected type
+      notes: 'Use assistance if needed',
+      muscleGroup: 'Back',
+      equipment: 'Barbell',
+      completed: false,
+      category: 'Strength',
+      difficulty: 10,
+    },
+  ],
+};

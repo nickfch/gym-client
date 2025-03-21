@@ -1,0 +1,1 @@
+export { UserFeedScreen } from './UserFeedScreen';
