@@ -1,6 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-export const styles = StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
   progressContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
@@ -9,21 +10,21 @@ export const styles = StyleSheet.create({
   progressNumber: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#4F46E5',
+    color: theme.colors.primary,
   },
   progressLabel: {
     fontSize: 14,
-    color: '#6B7280',
+    color: theme.colors.grey0,
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#4F46E5',
+    backgroundColor: theme.colors.primary,
     borderRadius: 4,
   },
   progressBarLabel: {
     fontSize: 14,
-    color: '#6B7280',
+    color: theme.colors.grey0,
     marginTop: 8,
     textAlign: 'center',
   },
-});
+}));

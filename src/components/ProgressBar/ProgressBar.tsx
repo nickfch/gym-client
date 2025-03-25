@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
 type ProgressBarProps = {
   progress: number;
@@ -7,6 +8,8 @@ type ProgressBarProps = {
 };
 
 export const ProgressBar = memo<ProgressBarProps>(({ progress, label }) => {
+  const styles = useStyles();
+
   return (
     <>
       <View style={styles.progressBarContainer}>
@@ -19,17 +22,17 @@ export const ProgressBar = memo<ProgressBarProps>(({ progress, label }) => {
   );
 });
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
   progressBarContainer: {
     height: 8,
-    backgroundColor: '#E5E7EB',
+    backgroundColor: theme.colors.background,
     borderRadius: 4,
     marginTop: 16,
     overflow: 'hidden',
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#4F46E5',
+    backgroundColor: theme.colors.primary,
     borderRadius: 4,
   },
   progressBarLabel: {
@@ -38,4 +41,4 @@ const styles = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
-});
+}));

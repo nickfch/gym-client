@@ -7,6 +7,7 @@ export enum MainBottomTab {
 export enum WorkoutStack {
   PlanWorkoutScreen = 'PlanWorkoutScreen',
   WorkoutScreen = 'WorkoutScreen',
+  WorkoutScoreScreen = 'WorkoutScoreScreen',
   FinishWorkoutScreen = 'FinishWorkoutScreen',
   WorkoutDetailsScreen = 'WorkoutDetailsScreen',
 }

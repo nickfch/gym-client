@@ -1,8 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-export const styles = StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
   workoutContainer: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: theme.colors.white,
     borderRadius: 8,
     overflow: 'hidden',
   },
@@ -18,39 +18,39 @@ export const styles = StyleSheet.create({
   workoutTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#111827',
+    color: theme.colors.grey0,
   },
   workoutTime: {
     fontSize: 14,
-    color: '#4F46E5',
+    color: theme.colors.grey1,
     marginTop: 4,
   },
   workoutDuration: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#F3F4F6',
+    backgroundColor: theme.colors.background,
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 16,
   },
   workoutDurationText: {
     fontSize: 14,
-    color: '#6B7280',
+    color: theme.colors.black,
     marginLeft: 4,
   },
   exercisesList: {
     marginVertical: 8,
   },
   startButton: {
-    backgroundColor: '#4F46E5',
+    backgroundColor: theme.colors.primary,
     borderRadius: 8,
     paddingVertical: 12,
     alignItems: 'center',
     marginTop: 12,
   },
   startButtonText: {
-    color: '#FFFFFF',
+    color: theme.colors.white,
     fontSize: 16,
     fontWeight: '600',
   },
-});
+}));

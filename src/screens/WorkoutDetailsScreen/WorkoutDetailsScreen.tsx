@@ -4,16 +4,16 @@ import {
   Text,
   ScrollView,
   TouchableOpacity,
-  StyleSheet,
   Alert,
   Modal,
   TextInput,
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Make sure to install expo/vector-icons
+import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '@rneui/themed';
 
 import { useBinaryState } from 'src/hooks/useBinaryState';
 import { Exercise, Workout, WithUserSpecificInfo } from 'src/types';
-import { styles } from './WorkoutDetailsScreen.styles';
+import { useStyles } from './WorkoutDetailsScreen.styles';
 import { WorkoutDetailsScreenProps } from './WorkoutDetailsScreen.types';
 import { WorkoutDetailsExercise } from './components/WorkoutDetailsExercise';
 import { mockWorkout } from './mockWorkout';
@@ -26,6 +26,8 @@ export const WorkoutDetailsScreen: React.FC<WorkoutDetailsScreenProps> = ({
   onAddExercise,
   isEditable = true,
 }) => {
+  const { theme } = useTheme();
+  const styles = useStyles();
   const [workout, setWorkout] =
     useState<WithUserSpecificInfo<Workout>>(initialWorkout);
   const {
@@ -205,17 +207,17 @@ export const WorkoutDetailsScreen: React.FC<WorkoutDetailsScreenProps> = ({
           </TouchableOpacity>
         )}
       </View>
-
-      {/* Description */}
       <Text style={styles.description}>{workout.description}</Text>
-
-      {/* Exercises Section */}
       <View style={styles.exercisesSection}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Exercises</Text>
           {isEditing && (
             <TouchableOpacity style={styles.addButton} onPress={onAddExercise}>
-              <Ionicons name="add-circle" size={20} color="#0066cc" />
+              <Ionicons
+                name="add-circle"
+                size={20}
+                color={theme.colors.primary}
+              />
               <Text style={styles.addButtonText}>Add Exercise</Text>
             </TouchableOpacity>
           )}

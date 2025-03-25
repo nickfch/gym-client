@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from '@rneui/themed';
 
-import { styles } from './ExerciseShortCard.styles';
+import { useStyles } from './ExerciseShortCard.styles';
 import { ExerciseShortCardProps } from './ExerciseShortCard.types';
 
 export const ExerciseShortCard: React.FC<ExerciseShortCardProps> = ({
@@ -11,6 +12,9 @@ export const ExerciseShortCard: React.FC<ExerciseShortCardProps> = ({
   onToggleComplete,
   isWorkoutInProgress,
 }) => {
+  const { theme } = useTheme();
+  const styles = useStyles();
+
   return (
     <View
       style={[
@@ -42,7 +46,9 @@ export const ExerciseShortCard: React.FC<ExerciseShortCardProps> = ({
                 : 'checkmark-circle-outline'
             }
             size={28}
-            color={exercise.completed ? '#4CAF50' : '#aaa'}
+            color={
+              exercise.completed ? theme.colors.success : theme.colors.grey5
+            }
           />
         </TouchableOpacity>
       )}

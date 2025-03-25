@@ -1,6 +1,8 @@
+import { useMemo } from 'react';
 import { SafeAreaView } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, FontAwesome6 } from '@expo/vector-icons';
+import { useTheme } from '@rneui/themed';
 
 import { MainBottomTab } from 'src/constants/navigation';
 import { UserFeedScreen } from 'src/screens/UserFeedScreen';
@@ -10,19 +12,21 @@ import { LeftDrawer } from './MainDrawer';
 
 const TabNavigator = createBottomTabNavigator();
 
-const ACTIVE_COLOR = 'red';
-const DEFAULT_COLOR = 'black';
-const baseScreenOptions = {
-  headerShown: false,
-  tabBarActiveTintColor: ACTIVE_COLOR,
-  tabBarInactiveTintColor: DEFAULT_COLOR,
-};
-
 export const MainBottomNavigation = () => {
+  const { theme } = useTheme();
+  const screenOptions = useMemo(
+    () => ({
+      headerShown: false,
+      tabBarActiveTintColor: theme.colors.primary,
+      tabBarInactiveTintColor: theme.colors.black,
+    }),
+    [theme],
+  );
+
   return (
     <TabNavigator.Navigator
       initialRouteName={MainBottomTab.HomeScreen}
-      screenOptions={baseScreenOptions}
+      screenOptions={screenOptions}
     >
       <TabNavigator.Screen
         name={MainBottomTab.HomeScreen}

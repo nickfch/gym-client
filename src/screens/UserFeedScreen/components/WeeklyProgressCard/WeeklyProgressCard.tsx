@@ -6,11 +6,12 @@ import { ProgressBar } from 'src/components/ProgressBar';
 import { FeedCard } from 'src/components/FeedCard';
 import { ProgressItem } from './components/ProgressItem';
 import { WeeklyProgressCardProps } from './WeeklyProgressCard.types';
-import { styles } from './WeeklyProgressCard.styles';
+import { useStyles } from './WeeklyProgressCard.styles';
 
 export const WeeklyProgressCard: React.FC<WeeklyProgressCardProps> = ({
   progress,
 }) => {
+  const styles = useStyles();
   const { t } = useTranslation();
 
   return (

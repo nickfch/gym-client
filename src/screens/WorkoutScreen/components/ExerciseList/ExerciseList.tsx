@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
 import { MainStack, ExerciseStack } from 'src/constants/navigation';
+import { ExerciseStackScreenProps } from 'src/types/navigation.d';
 import { styles } from './ExerciseList.styles';
 import { ExerciseItemProps, ExerciseListProps } from './ExerciseList.types';
 
@@ -37,7 +37,7 @@ const ExerciseItem: React.FC<ExerciseItemProps> = ({
       {isWorkoutInProgress && (
         <TouchableOpacity
           style={styles.completeButton}
-          onPress={() => onToggleComplete(exercise.id)}
+          onPress={() => onToggleComplete(exercise.documentId!)}
         >
           <Ionicons
             name={
@@ -61,25 +61,35 @@ export const ExerciseList: React.FC<ExerciseListProps> = ({
   toggleCompletion,
 }) => {
   const { navigate } = useNavigation();
+  const navigateToCurrentExercise = useCallback(
+    (exerciseId: string) => {
+      navigate(MainStack.ExerciseStack, {
+        screen: ExerciseStack.ExerciseDetailsScreen,
+        params: {
+          exerciseId,
+        },
+      });
+    },
+    [navigate],
+  );
 
   return (
     <View style={styles.container}>
       <Text style={styles.sectionTitle}>Exercises</Text>
       <FlatList
         data={exercises}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.documentId!}
         renderItem={({ item }) => (
           <TouchableOpacity
             onPress={() => {
-              navigate(MainStack.ExerciseStack, {
-                screen: ExerciseStack.ExerciseDetailsScreen,
-                exerciseId: item.id,
-              });
+              if (!item.documentId) return;
+
+              navigateToCurrentExercise(item.documentId);
             }}
           >
             <ExerciseItem
               exercise={item}
-              isCurrent={item.id === currentExerciseId}
+              isCurrent={item.documentId === currentExerciseId}
               onToggleComplete={toggleCompletion}
               isWorkoutInProgress={workoutInProgress}
             />

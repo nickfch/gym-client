@@ -6,6 +6,14 @@ const UPCOMING_WORKOUTS_LIMIT = 2;
 
 export const useUserFeedLogic = () => {
   const { data, isLoading } = useGetUserWorkouts();
+  const completedWorkoutIds = useMemo(
+    () =>
+      data?.data
+        ?.filter(({ completed }) => completed)
+        .map(({ documentId }) => documentId) || [],
+    [data],
+  );
+
   const normalizedData = useMemo(() => {
     if (!data) {
       return {
@@ -36,12 +44,23 @@ export const useUserFeedLogic = () => {
         .slice(0, UPCOMING_WORKOUTS_LIMIT),
     [normalizedData],
   );
-  const nearestWorkoutId = useMemo(() => uncompletedWorkoutIds[0], []);
+
+  const nearestWorkoutId = useMemo(
+    () => uncompletedWorkoutIds[0],
+    [uncompletedWorkoutIds],
+  );
+
+  const uncompletedWorkouts = useMemo(
+    () => uncompletedWorkoutIds.map((id) => normalizedData.data[id]),
+    [uncompletedWorkoutIds, normalizedData],
+  );
 
   return {
     isLoading,
     normalizedData,
     nearestWorkoutId,
     uncompletedWorkoutIds,
+    uncompletedWorkouts,
+    completedWorkoutIds,
   };
 };

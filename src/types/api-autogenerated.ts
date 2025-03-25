@@ -579,15 +579,24 @@ export interface Article {
         documentId?: string;
       }[];
     };
-    blocks?: AbstractNull1 &
+    blocks?: DiscriminatorNull1 &
       (
-        | AbstractNull1ComponentMapping<'shared.media', SharedMediaComponent>
-        | AbstractNull1ComponentMapping<'shared.quote', SharedQuoteComponent>
-        | AbstractNull1ComponentMapping<
+        | DiscriminatorNull1ComponentMapping<
+            'shared.media',
+            SharedMediaComponent
+          >
+        | DiscriminatorNull1ComponentMapping<
+            'shared.quote',
+            SharedQuoteComponent
+          >
+        | DiscriminatorNull1ComponentMapping<
             'shared.rich-text',
             SharedRichTextComponent
           >
-        | AbstractNull1ComponentMapping<'shared.slider', SharedSliderComponent>
+        | DiscriminatorNull1ComponentMapping<
+            'shared.slider',
+            SharedSliderComponent
+          >
       );
     /** @format date-time */
     createdAt?: string;
@@ -625,10 +634,11 @@ export interface ExerciseRequest {
     description: string;
     equipment?: ExerciseRequestEquipmentEnum;
     rest_time?: number;
-    user_exercises?: (number | string)[];
     workouts?: (number | string)[];
     /** @example "string or id" */
-    video_example: number | string;
+    video_example?: number | string;
+    tips?: any;
+    steps?: string;
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -658,15 +668,14 @@ export interface Exercise {
   description: string;
   equipment?: ExerciseEquipmentEnum;
   rest_time?: number;
-  user_exercises?: {
+  workouts?: {
     id?: number;
     documentId?: string;
-    /** @format float */
-    weight?: number;
-    user_notes?: string;
+    name?: string;
+    duration?: number;
+    description?: string;
     difficulty?: number;
-    reps?: number;
-    exercise?: {
+    exercises?: {
       id?: number;
       documentId?: string;
       name?: string;
@@ -676,255 +685,9 @@ export interface Exercise {
       description?: string;
       equipment?: ExerciseEquipmentEnum1;
       rest_time?: number;
-      user_exercises?: {
-        id?: number;
-        documentId?: string;
-      }[];
       workouts?: {
         id?: number;
         documentId?: string;
-        name?: string;
-        duration?: number;
-        description?: string;
-        difficulty?: number;
-        exercises?: {
-          id?: number;
-          documentId?: string;
-        }[];
-        type?: ExerciseTypeEnum;
-        user_workouts?: {
-          id?: number;
-          documentId?: string;
-          /** @format date */
-          date?: string;
-          completed?: boolean;
-          users?: {
-            id?: number;
-            documentId?: string;
-            username?: string;
-            /** @format email */
-            email?: string;
-            provider?: string;
-            resetPasswordToken?: string;
-            confirmationToken?: string;
-            confirmed?: boolean;
-            blocked?: boolean;
-            role?: {
-              id?: number;
-              documentId?: string;
-              name?: string;
-              description?: string;
-              type?: string;
-              permissions?: {
-                id?: number;
-                documentId?: string;
-                action?: string;
-                role?: {
-                  id?: number;
-                  documentId?: string;
-                };
-                /** @format date-time */
-                createdAt?: string;
-                /** @format date-time */
-                updatedAt?: string;
-                /** @format date-time */
-                publishedAt?: string;
-                createdBy?: {
-                  id?: number;
-                  documentId?: string;
-                  firstname?: string;
-                  lastname?: string;
-                  username?: string;
-                  /** @format email */
-                  email?: string;
-                  resetPasswordToken?: string;
-                  registrationToken?: string;
-                  isActive?: boolean;
-                  roles?: {
-                    id?: number;
-                    documentId?: string;
-                    name?: string;
-                    code?: string;
-                    description?: string;
-                    users?: {
-                      id?: number;
-                      documentId?: string;
-                    }[];
-                    permissions?: {
-                      id?: number;
-                      documentId?: string;
-                      action?: string;
-                      actionParameters?: any;
-                      subject?: string;
-                      properties?: any;
-                      conditions?: any;
-                      role?: {
-                        id?: number;
-                        documentId?: string;
-                      };
-                      /** @format date-time */
-                      createdAt?: string;
-                      /** @format date-time */
-                      updatedAt?: string;
-                      /** @format date-time */
-                      publishedAt?: string;
-                      createdBy?: {
-                        id?: number;
-                        documentId?: string;
-                      };
-                      updatedBy?: {
-                        id?: number;
-                        documentId?: string;
-                      };
-                      locale?: string;
-                      localizations?: {
-                        id?: number;
-                        documentId?: string;
-                      }[];
-                    }[];
-                    /** @format date-time */
-                    createdAt?: string;
-                    /** @format date-time */
-                    updatedAt?: string;
-                    /** @format date-time */
-                    publishedAt?: string;
-                    createdBy?: {
-                      id?: number;
-                      documentId?: string;
-                    };
-                    updatedBy?: {
-                      id?: number;
-                      documentId?: string;
-                    };
-                    locale?: string;
-                    localizations?: {
-                      id?: number;
-                      documentId?: string;
-                    }[];
-                  }[];
-                  blocked?: boolean;
-                  preferedLanguage?: string;
-                  /** @format date-time */
-                  createdAt?: string;
-                  /** @format date-time */
-                  updatedAt?: string;
-                  /** @format date-time */
-                  publishedAt?: string;
-                  createdBy?: {
-                    id?: number;
-                    documentId?: string;
-                  };
-                  updatedBy?: {
-                    id?: number;
-                    documentId?: string;
-                  };
-                  locale?: string;
-                  localizations?: {
-                    id?: number;
-                    documentId?: string;
-                  }[];
-                };
-                updatedBy?: {
-                  id?: number;
-                  documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                  id?: number;
-                  documentId?: string;
-                }[];
-              }[];
-              users?: {
-                id?: number;
-                documentId?: string;
-              }[];
-              /** @format date-time */
-              createdAt?: string;
-              /** @format date-time */
-              updatedAt?: string;
-              /** @format date-time */
-              publishedAt?: string;
-              createdBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              updatedBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              locale?: string;
-              localizations?: {
-                id?: number;
-                documentId?: string;
-              }[];
-            };
-            user_workouts?: {
-              id?: number;
-              documentId?: string;
-            }[];
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          };
-          workout?: {
-            id?: number;
-            documentId?: string;
-          };
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        }[];
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
       }[];
       video_example?: {
         id?: number;
@@ -997,6 +760,97 @@ export interface Exercise {
             createdBy?: {
               id?: number;
               documentId?: string;
+              firstname?: string;
+              lastname?: string;
+              username?: string;
+              /** @format email */
+              email?: string;
+              resetPasswordToken?: string;
+              registrationToken?: string;
+              isActive?: boolean;
+              roles?: {
+                id?: number;
+                documentId?: string;
+                name?: string;
+                code?: string;
+                description?: string;
+                users?: {
+                  id?: number;
+                  documentId?: string;
+                }[];
+                permissions?: {
+                  id?: number;
+                  documentId?: string;
+                  action?: string;
+                  actionParameters?: any;
+                  subject?: string;
+                  properties?: any;
+                  conditions?: any;
+                  role?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  /** @format date-time */
+                  createdAt?: string;
+                  /** @format date-time */
+                  updatedAt?: string;
+                  /** @format date-time */
+                  publishedAt?: string;
+                  createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  locale?: string;
+                  localizations?: {
+                    id?: number;
+                    documentId?: string;
+                  }[];
+                }[];
+                /** @format date-time */
+                createdAt?: string;
+                /** @format date-time */
+                updatedAt?: string;
+                /** @format date-time */
+                publishedAt?: string;
+                createdBy?: {
+                  id?: number;
+                  documentId?: string;
+                };
+                updatedBy?: {
+                  id?: number;
+                  documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                  id?: number;
+                  documentId?: string;
+                }[];
+              }[];
+              blocked?: boolean;
+              preferedLanguage?: string;
+              /** @format date-time */
+              createdAt?: string;
+              /** @format date-time */
+              updatedAt?: string;
+              /** @format date-time */
+              publishedAt?: string;
+              createdBy?: {
+                id?: number;
+                documentId?: string;
+              };
+              updatedBy?: {
+                id?: number;
+                documentId?: string;
+              };
+              locale?: string;
+              localizations?: {
+                id?: number;
+                documentId?: string;
+              }[];
             };
             updatedBy?: {
               id?: number;
@@ -1050,6 +904,8 @@ export interface Exercise {
           documentId?: string;
         }[];
       };
+      tips?: any;
+      steps?: string;
       /** @format date-time */
       createdAt?: string;
       /** @format date-time */
@@ -1069,7 +925,131 @@ export interface Exercise {
         id?: number;
         documentId?: string;
       }[];
-    };
+    }[];
+    type?: ExerciseTypeEnum;
+    user_workouts?: {
+      id?: number;
+      documentId?: string;
+      /** @format date */
+      date?: string;
+      completed?: boolean;
+      users?: {
+        id?: number;
+        documentId?: string;
+        username?: string;
+        /** @format email */
+        email?: string;
+        provider?: string;
+        resetPasswordToken?: string;
+        confirmationToken?: string;
+        confirmed?: boolean;
+        blocked?: boolean;
+        role?: {
+          id?: number;
+          documentId?: string;
+          name?: string;
+          description?: string;
+          type?: string;
+          permissions?: {
+            id?: number;
+            documentId?: string;
+            action?: string;
+            role?: {
+              id?: number;
+              documentId?: string;
+            };
+            /** @format date-time */
+            createdAt?: string;
+            /** @format date-time */
+            updatedAt?: string;
+            /** @format date-time */
+            publishedAt?: string;
+            createdBy?: {
+              id?: number;
+              documentId?: string;
+            };
+            updatedBy?: {
+              id?: number;
+              documentId?: string;
+            };
+            locale?: string;
+            localizations?: {
+              id?: number;
+              documentId?: string;
+            }[];
+          }[];
+          users?: {
+            id?: number;
+            documentId?: string;
+          }[];
+          /** @format date-time */
+          createdAt?: string;
+          /** @format date-time */
+          updatedAt?: string;
+          /** @format date-time */
+          publishedAt?: string;
+          createdBy?: {
+            id?: number;
+            documentId?: string;
+          };
+          updatedBy?: {
+            id?: number;
+            documentId?: string;
+          };
+          locale?: string;
+          localizations?: {
+            id?: number;
+            documentId?: string;
+          }[];
+        };
+        user_workouts?: {
+          id?: number;
+          documentId?: string;
+        }[];
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        /** @format date-time */
+        publishedAt?: string;
+        createdBy?: {
+          id?: number;
+          documentId?: string;
+        };
+        updatedBy?: {
+          id?: number;
+          documentId?: string;
+        };
+        locale?: string;
+        localizations?: {
+          id?: number;
+          documentId?: string;
+        }[];
+      };
+      workout?: {
+        id?: number;
+        documentId?: string;
+      };
+      /** @format date-time */
+      createdAt?: string;
+      /** @format date-time */
+      updatedAt?: string;
+      /** @format date-time */
+      publishedAt?: string;
+      createdBy?: {
+        id?: number;
+        documentId?: string;
+      };
+      updatedBy?: {
+        id?: number;
+        documentId?: string;
+      };
+      locale?: string;
+      localizations?: {
+        id?: number;
+        documentId?: string;
+      }[];
+    }[];
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -1090,11 +1070,7 @@ export interface Exercise {
       documentId?: string;
     }[];
   }[];
-  workouts?: {
-    id?: number;
-    documentId?: string;
-  }[];
-  video_example: {
+  video_example?: {
     id?: number;
     documentId?: string;
     name?: string;
@@ -1141,6 +1117,8 @@ export interface Exercise {
       documentId?: string;
     }[];
   };
+  tips?: any;
+  steps?: string;
   /** @format date-time */
   createdAt?: string;
   /** @format date-time */
@@ -1410,75 +1388,6 @@ export interface Global {
     localizations?: {
       id?: number;
       documentId?: string;
-      siteName?: string;
-      favicon?: {
-        id?: number;
-        documentId?: string;
-        name?: string;
-        alternativeText?: string;
-        caption?: string;
-        width?: number;
-        height?: number;
-        formats?: any;
-        hash?: string;
-        ext?: string;
-        mime?: string;
-        /** @format float */
-        size?: number;
-        url?: string;
-        previewUrl?: string;
-        provider?: string;
-        provider_metadata?: any;
-        related?: {
-          id?: number;
-          documentId?: string;
-        }[];
-        folder?: {
-          id?: number;
-          documentId?: string;
-        };
-        folderPath?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      };
-      siteDescription?: string;
-      defaultSeo?: SharedSeoComponent;
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
     }[];
   };
   siteDescription: string;
@@ -1629,500 +1538,6 @@ export interface SharedSeoComponent {
       documentId?: string;
     }[];
   };
-}
-
-export interface UserExerciseRequest {
-  data: {
-    /** @format float */
-    weight: number;
-    user_notes?: string;
-    difficulty?: number;
-    reps: number;
-    /** @example "string or id" */
-    exercise?: number | string;
-    locale?: string;
-    localizations?: (number | string)[];
-  };
-}
-
-export interface UserExerciseListResponse {
-  data?: UserExercise[];
-  meta?: {
-    pagination?: {
-      page?: number;
-      /** @min 25 */
-      pageSize?: number;
-      /** @max 1 */
-      pageCount?: number;
-      total?: number;
-    };
-  };
-}
-
-export interface UserExercise {
-  id?: number;
-  documentId?: string;
-  /** @format float */
-  weight: number;
-  user_notes?: string;
-  difficulty?: number;
-  reps: number;
-  exercise?: {
-    id?: number;
-    documentId?: string;
-    name?: string;
-    category?: UserExerciseCategoryEnum;
-    sets?: number;
-    muscle_group?: UserExerciseMuscleGroupEnum;
-    description?: string;
-    equipment?: UserExerciseEquipmentEnum;
-    rest_time?: number;
-    user_exercises?: {
-      id?: number;
-      documentId?: string;
-      /** @format float */
-      weight?: number;
-      user_notes?: string;
-      difficulty?: number;
-      reps?: number;
-      exercise?: {
-        id?: number;
-        documentId?: string;
-      };
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-        firstname?: string;
-        lastname?: string;
-        username?: string;
-        /** @format email */
-        email?: string;
-        resetPasswordToken?: string;
-        registrationToken?: string;
-        isActive?: boolean;
-        roles?: {
-          id?: number;
-          documentId?: string;
-          name?: string;
-          code?: string;
-          description?: string;
-          users?: {
-            id?: number;
-            documentId?: string;
-          }[];
-          permissions?: {
-            id?: number;
-            documentId?: string;
-            action?: string;
-            actionParameters?: any;
-            subject?: string;
-            properties?: any;
-            conditions?: any;
-            role?: {
-              id?: number;
-              documentId?: string;
-            };
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          }[];
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        }[];
-        blocked?: boolean;
-        preferedLanguage?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    }[];
-    workouts?: {
-      id?: number;
-      documentId?: string;
-      name?: string;
-      duration?: number;
-      description?: string;
-      difficulty?: number;
-      exercises?: {
-        id?: number;
-        documentId?: string;
-      }[];
-      type?: UserExerciseTypeEnum;
-      user_workouts?: {
-        id?: number;
-        documentId?: string;
-        /** @format date */
-        date?: string;
-        completed?: boolean;
-        users?: {
-          id?: number;
-          documentId?: string;
-          username?: string;
-          /** @format email */
-          email?: string;
-          provider?: string;
-          resetPasswordToken?: string;
-          confirmationToken?: string;
-          confirmed?: boolean;
-          blocked?: boolean;
-          role?: {
-            id?: number;
-            documentId?: string;
-            name?: string;
-            description?: string;
-            type?: string;
-            permissions?: {
-              id?: number;
-              documentId?: string;
-              action?: string;
-              role?: {
-                id?: number;
-                documentId?: string;
-              };
-              /** @format date-time */
-              createdAt?: string;
-              /** @format date-time */
-              updatedAt?: string;
-              /** @format date-time */
-              publishedAt?: string;
-              createdBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              updatedBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              locale?: string;
-              localizations?: {
-                id?: number;
-                documentId?: string;
-              }[];
-            }[];
-            users?: {
-              id?: number;
-              documentId?: string;
-            }[];
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          };
-          user_workouts?: {
-            id?: number;
-            documentId?: string;
-          }[];
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        };
-        workout?: {
-          id?: number;
-          documentId?: string;
-        };
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      }[];
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    }[];
-    video_example?: {
-      id?: number;
-      documentId?: string;
-      name?: string;
-      alternativeText?: string;
-      caption?: string;
-      width?: number;
-      height?: number;
-      formats?: any;
-      hash?: string;
-      ext?: string;
-      mime?: string;
-      /** @format float */
-      size?: number;
-      url?: string;
-      previewUrl?: string;
-      provider?: string;
-      provider_metadata?: any;
-      related?: {
-        id?: number;
-        documentId?: string;
-      }[];
-      folder?: {
-        id?: number;
-        documentId?: string;
-        name?: string;
-        pathId?: number;
-        parent?: {
-          id?: number;
-          documentId?: string;
-        };
-        children?: {
-          id?: number;
-          documentId?: string;
-        }[];
-        files?: {
-          id?: number;
-          documentId?: string;
-          name?: string;
-          alternativeText?: string;
-          caption?: string;
-          width?: number;
-          height?: number;
-          formats?: any;
-          hash?: string;
-          ext?: string;
-          mime?: string;
-          /** @format float */
-          size?: number;
-          url?: string;
-          previewUrl?: string;
-          provider?: string;
-          provider_metadata?: any;
-          related?: {
-            id?: number;
-            documentId?: string;
-          }[];
-          folder?: {
-            id?: number;
-            documentId?: string;
-          };
-          folderPath?: string;
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        }[];
-        path?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      };
-      folderPath?: string;
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    };
-    /** @format date-time */
-    createdAt?: string;
-    /** @format date-time */
-    updatedAt?: string;
-    /** @format date-time */
-    publishedAt?: string;
-    createdBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    updatedBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    locale?: string;
-    localizations?: {
-      id?: number;
-      documentId?: string;
-    }[];
-  };
-  /** @format date-time */
-  createdAt?: string;
-  /** @format date-time */
-  updatedAt?: string;
-  /** @format date-time */
-  publishedAt?: string;
-  createdBy?: {
-    id?: number;
-    documentId?: string;
-  };
-  updatedBy?: {
-    id?: number;
-    documentId?: string;
-  };
-  locale?: string;
-  localizations?: {
-    id?: number;
-    documentId?: string;
-  }[];
-}
-
-export interface UserExerciseResponse {
-  data?: UserExercise;
-  meta?: object;
 }
 
 export interface UserWorkoutRequest {
@@ -2346,38 +1761,6 @@ export interface UserWorkout {
           description?: string;
           equipment?: UserWorkoutEquipmentEnum;
           rest_time?: number;
-          user_exercises?: {
-            id?: number;
-            documentId?: string;
-            /** @format float */
-            weight?: number;
-            user_notes?: string;
-            difficulty?: number;
-            reps?: number;
-            exercise?: {
-              id?: number;
-              documentId?: string;
-            };
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          }[];
           workouts?: {
             id?: number;
             documentId?: string;
@@ -2506,6 +1889,8 @@ export interface UserWorkout {
               documentId?: string;
             }[];
           };
+          tips?: any;
+          steps?: string;
           /** @format date-time */
           createdAt?: string;
           /** @format date-time */
@@ -2666,129 +2051,6 @@ export interface Workout {
     description?: string;
     equipment?: WorkoutEquipmentEnum;
     rest_time?: number;
-    user_exercises?: {
-      id?: number;
-      documentId?: string;
-      /** @format float */
-      weight?: number;
-      user_notes?: string;
-      difficulty?: number;
-      reps?: number;
-      exercise?: {
-        id?: number;
-        documentId?: string;
-      };
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-        firstname?: string;
-        lastname?: string;
-        username?: string;
-        /** @format email */
-        email?: string;
-        resetPasswordToken?: string;
-        registrationToken?: string;
-        isActive?: boolean;
-        roles?: {
-          id?: number;
-          documentId?: string;
-          name?: string;
-          code?: string;
-          description?: string;
-          users?: {
-            id?: number;
-            documentId?: string;
-          }[];
-          permissions?: {
-            id?: number;
-            documentId?: string;
-            action?: string;
-            actionParameters?: any;
-            subject?: string;
-            properties?: any;
-            conditions?: any;
-            role?: {
-              id?: number;
-              documentId?: string;
-            };
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          }[];
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        }[];
-        blocked?: boolean;
-        preferedLanguage?: string;
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    }[];
     workouts?: {
       id?: number;
       documentId?: string;
@@ -2841,6 +2103,97 @@ export interface Workout {
               createdBy?: {
                 id?: number;
                 documentId?: string;
+                firstname?: string;
+                lastname?: string;
+                username?: string;
+                /** @format email */
+                email?: string;
+                resetPasswordToken?: string;
+                registrationToken?: string;
+                isActive?: boolean;
+                roles?: {
+                  id?: number;
+                  documentId?: string;
+                  name?: string;
+                  code?: string;
+                  description?: string;
+                  users?: {
+                    id?: number;
+                    documentId?: string;
+                  }[];
+                  permissions?: {
+                    id?: number;
+                    documentId?: string;
+                    action?: string;
+                    actionParameters?: any;
+                    subject?: string;
+                    properties?: any;
+                    conditions?: any;
+                    role?: {
+                      id?: number;
+                      documentId?: string;
+                    };
+                    /** @format date-time */
+                    createdAt?: string;
+                    /** @format date-time */
+                    updatedAt?: string;
+                    /** @format date-time */
+                    publishedAt?: string;
+                    createdBy?: {
+                      id?: number;
+                      documentId?: string;
+                    };
+                    updatedBy?: {
+                      id?: number;
+                      documentId?: string;
+                    };
+                    locale?: string;
+                    localizations?: {
+                      id?: number;
+                      documentId?: string;
+                    }[];
+                  }[];
+                  /** @format date-time */
+                  createdAt?: string;
+                  /** @format date-time */
+                  updatedAt?: string;
+                  /** @format date-time */
+                  publishedAt?: string;
+                  createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  locale?: string;
+                  localizations?: {
+                    id?: number;
+                    documentId?: string;
+                  }[];
+                }[];
+                blocked?: boolean;
+                preferedLanguage?: string;
+                /** @format date-time */
+                createdAt?: string;
+                /** @format date-time */
+                updatedAt?: string;
+                /** @format date-time */
+                publishedAt?: string;
+                createdBy?: {
+                  id?: number;
+                  documentId?: string;
+                };
+                updatedBy?: {
+                  id?: number;
+                  documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                  id?: number;
+                  documentId?: string;
+                }[];
               };
               updatedBy?: {
                 id?: number;
@@ -3068,6 +2421,8 @@ export interface Workout {
         documentId?: string;
       }[];
     };
+    tips?: any;
+    steps?: string;
     /** @format date-time */
     createdAt?: string;
     /** @format date-time */
@@ -3266,14 +2621,14 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type AbstractNull1 = (
+type DiscriminatorNull1 = (
   | SharedMediaComponent
   | SharedQuoteComponent
   | SharedRichTextComponent
   | SharedSliderComponent
 )[];
 
-type AbstractNull1ComponentMapping<Key, Type> = {
+type DiscriminatorNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
@@ -3497,86 +2852,6 @@ export type ExerciseEquipmentEnum1 =
   | 'No Need';
 
 export type ExerciseTypeEnum =
-  | 'Upper Body'
-  | 'Lower Body'
-  | 'Core'
-  | 'Full-Body'
-  | 'Cardio';
-
-export type UserExerciseCategoryEnum =
-  | 'Strength'
-  | 'Cardio'
-  | 'Flexibility'
-  | 'Balance'
-  | 'Endurance'
-  | 'Power'
-  | 'Speed'
-  | 'Agility'
-  | 'Mobility'
-  | 'Recovery';
-
-export type UserExerciseMuscleGroupEnum =
-  | 'Chest'
-  | 'Back'
-  | 'Shoulders'
-  | 'Biceps'
-  | 'Triceps'
-  | 'Forearms'
-  | 'Abs'
-  | 'Obliques'
-  | 'Glutes'
-  | 'Quadriceps'
-  | 'Hamstrings'
-  | 'Calves'
-  | 'Traps'
-  | 'Lats'
-  | 'Lower Back'
-  | 'Hip Flexors';
-
-export type UserExerciseEquipmentEnum =
-  | 'Treadmill'
-  | 'Elliptical Trainer'
-  | 'Stationary Bike'
-  | 'Rowing Machine'
-  | 'Stair Climber'
-  | 'Dumbbells'
-  | 'Barbells'
-  | 'Kettlebells'
-  | 'Weight Plates'
-  | 'Resistance Bands'
-  | 'Medicine Ball'
-  | 'Slam Ball'
-  | 'Sandbag'
-  | 'Battle Ropes'
-  | 'Jump Rope'
-  | 'Pull-up Bar'
-  | 'Dip Station'
-  | 'Power Rack'
-  | 'Squat Rack'
-  | 'Smith Machine'
-  | 'Bench Press'
-  | 'Adjustable Bench'
-  | 'Leg Press Machine'
-  | 'Hack Squat Machine'
-  | 'Cable Machine'
-  | 'Lat Pulldown Machine'
-  | 'Seated Row Machine'
-  | 'Chest Press Machine'
-  | 'Shoulder Press Machine'
-  | 'Leg Curl Machine'
-  | 'Leg Extension Machine'
-  | 'Calf Raise Machine'
-  | 'Ab Roller'
-  | 'Hyperextension Bench'
-  | 'Punching Bag'
-  | 'Speed Bag'
-  | 'Plyometric Box'
-  | 'TRX Suspension Trainer'
-  | 'Foam Roller'
-  | 'Yoga Mat'
-  | 'No Need';
-
-export type UserExerciseTypeEnum =
   | 'Upper Body'
   | 'Lower Body'
   | 'Core'
@@ -3884,40 +3159,6 @@ export type PutGlobalData = GlobalResponse;
 
 /** @format int64 */
 export type DeleteGlobalData = number;
-
-export interface GetUserExercisesParams {
-  /** Sort by attributes ascending (asc) or descending (desc) */
-  sort?: string;
-  /** Return page/pageSize (default: true) */
-  'pagination[withCount]'?: boolean;
-  /** Page number (default: 0) */
-  'pagination[page]'?: number;
-  /** Page size (default: 25) */
-  'pagination[pageSize]'?: number;
-  /** Offset value (default: 0) */
-  'pagination[start]'?: number;
-  /** Number of entities to return (default: 25) */
-  'pagination[limit]'?: number;
-  /** Fields to return (ex: title,author) */
-  fields?: string;
-  /** Relations to return */
-  populate?: string;
-  /** Filters to apply */
-  filters?: Record<string, any>;
-  /** Locale to apply */
-  locale?: string;
-}
-
-export type GetUserExercisesData = UserExerciseListResponse;
-
-export type PostUserExercisesData = UserExerciseResponse;
-
-export type GetUserExercisesIdData = UserExerciseResponse;
-
-export type PutUserExercisesIdData = UserExerciseResponse;
-
-/** @format int64 */
-export type DeleteUserExercisesIdData = number;
 
 export interface GetUserWorkoutsParams {
   /** Sort by attributes ascending (asc) or descending (desc) */
@@ -4485,110 +3726,6 @@ export namespace Global {
     export type RequestBody = never;
     export type RequestHeaders = {};
     export type ResponseBody = DeleteGlobalData;
-  }
-}
-
-export namespace UserExercise {
-  /**
-   * No description
-   * @tags User-exercise
-   * @name GetUserExercises
-   * @request GET:/user-exercises
-   * @secure
-   */
-  export namespace GetUserExercises {
-    export type RequestParams = {};
-    export type RequestQuery = {
-      /** Sort by attributes ascending (asc) or descending (desc) */
-      sort?: string;
-      /** Return page/pageSize (default: true) */
-      'pagination[withCount]'?: boolean;
-      /** Page number (default: 0) */
-      'pagination[page]'?: number;
-      /** Page size (default: 25) */
-      'pagination[pageSize]'?: number;
-      /** Offset value (default: 0) */
-      'pagination[start]'?: number;
-      /** Number of entities to return (default: 25) */
-      'pagination[limit]'?: number;
-      /** Fields to return (ex: title,author) */
-      fields?: string;
-      /** Relations to return */
-      populate?: string;
-      /** Filters to apply */
-      filters?: Record<string, any>;
-      /** Locale to apply */
-      locale?: string;
-    };
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = GetUserExercisesData;
-  }
-
-  /**
-   * No description
-   * @tags User-exercise
-   * @name PostUserExercises
-   * @request POST:/user-exercises
-   * @secure
-   */
-  export namespace PostUserExercises {
-    export type RequestParams = {};
-    export type RequestQuery = {};
-    export type RequestBody = UserExerciseRequest;
-    export type RequestHeaders = {};
-    export type ResponseBody = PostUserExercisesData;
-  }
-
-  /**
-   * No description
-   * @tags User-exercise
-   * @name GetUserExercisesId
-   * @request GET:/user-exercises/{id}
-   * @secure
-   */
-  export namespace GetUserExercisesId {
-    export type RequestParams = {
-      id: number;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = GetUserExercisesIdData;
-  }
-
-  /**
-   * No description
-   * @tags User-exercise
-   * @name PutUserExercisesId
-   * @request PUT:/user-exercises/{id}
-   * @secure
-   */
-  export namespace PutUserExercisesId {
-    export type RequestParams = {
-      id: number;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = UserExerciseRequest;
-    export type RequestHeaders = {};
-    export type ResponseBody = PutUserExercisesIdData;
-  }
-
-  /**
-   * No description
-   * @tags User-exercise
-   * @name DeleteUserExercisesId
-   * @request DELETE:/user-exercises/{id}
-   * @secure
-   */
-  export namespace DeleteUserExercisesId {
-    export type RequestParams = {
-      id: number;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = DeleteUserExercisesIdData;
   }
 }
 

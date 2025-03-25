@@ -1,13 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-export const styles = StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
   feedItem: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    borderBottomColor: theme.colors.grey5,
   },
   feedItemContent: {
     flexDirection: 'row',
@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#EEF2FF',
+    backgroundColor: theme.colors.background,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -29,11 +29,11 @@ export const styles = StyleSheet.create({
   feedItemTitle: {
     fontSize: 16,
     fontWeight: '500',
-    color: '#111827',
+    color: theme.colors.grey0,
   },
   feedItemSubtitle: {
     fontSize: 14,
-    color: '#6B7280',
+    color: theme.colors.grey1,
     marginTop: 2,
   },
-});
+}));

@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-export const styles = StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
   cardHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -10,11 +10,11 @@ export const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#111827',
+    color: theme.colors.grey0,
   },
   seeAllText: {
     fontSize: 14,
-    color: '#4F46E5',
+    color: theme.colors.primary,
     fontWeight: '500',
   },
-});
+}));

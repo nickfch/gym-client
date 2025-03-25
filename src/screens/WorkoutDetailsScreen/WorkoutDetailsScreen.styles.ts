@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-export const styles = StyleSheet.create({
+export const useStyles = makeStyles({
   container: {
     flex: 1,
     backgroundColor: '#f8f8f8',

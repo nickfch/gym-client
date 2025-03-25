@@ -12,20 +12,22 @@ export const WorkoutHeader: React.FC<WorkoutHeaderProps> = ({
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{workout.name}</Text>
-      <Text style={styles.category}>{workout.category}</Text>
+      <Text style={styles.category}>{workout.type}</Text>
       <Text style={styles.description}>{workout.description}</Text>
 
       <View style={styles.detailsRow}>
         <View style={styles.detailItem}>
           <Text style={styles.detailLabel}>Difficulty</Text>
           <Text style={styles.detailValue}>
-            {'⭐'.repeat(workout.difficulty)}
+            {'🔥'.repeat(workout.difficulty)}
           </Text>
         </View>
 
         <View style={styles.detailItem}>
           <Text style={styles.detailLabel}>Equipment</Text>
-          <Text style={styles.detailValue}>{workout.equipment}</Text>
+          <Text style={styles.detailValue}>
+            {workout.exercises?.map(({ equipment }) => equipment).join(', ')}
+          </Text>
         </View>
       </View>
 

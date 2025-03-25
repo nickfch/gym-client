@@ -8,7 +8,7 @@ import { FeedCard } from 'src/components/FeedCard';
 import { CardHeader } from 'src/components/CardHeader';
 import { ExerciseShortCard } from 'src/components/ExerciseShortCard';
 import { MainStack, WorkoutStack } from 'src/constants/navigation';
-import { styles } from './NextWorkoutCard.styles';
+import { useStyles } from './NextWorkoutCard.styles';
 import { NextWorkoutCardProps } from './NextWorkoutCard.types';
 import { WorkoutStackScreenProps } from 'src/types/navigation.d';
 
@@ -18,6 +18,7 @@ export const NextWorkoutCard: React.FC<NextWorkoutCardProps> = ({
   duration,
   exercises,
 }) => {
+  const styles = useStyles();
   const { t } = useTranslation();
   const { navigate } =
     useNavigation<
@@ -29,6 +30,7 @@ export const NextWorkoutCard: React.FC<NextWorkoutCardProps> = ({
       screen: WorkoutStack.WorkoutDetailsScreen,
       params: {
         workoutId,
+        name,
       },
     });
   };
@@ -38,6 +40,7 @@ export const NextWorkoutCard: React.FC<NextWorkoutCardProps> = ({
       screen: WorkoutStack.WorkoutScreen,
       params: {
         workoutId,
+        name,
       },
     });
   };

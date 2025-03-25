@@ -18,10 +18,12 @@ export const MainNavigation = () => {
       <Stack.Screen
         name={MainStack.WorkoutStack}
         component={WorkoutStackNavigation}
+        options={{ headerShown: true, title: '' }}
       />
       <Stack.Screen
         name={MainStack.ExerciseStack}
         component={ExerciseNavigation}
+        options={{ headerShown: true, title: '' }}
       />
     </Stack.Navigator>
   );

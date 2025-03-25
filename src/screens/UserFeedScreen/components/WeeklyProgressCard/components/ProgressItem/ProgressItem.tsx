@@ -1,5 +1,6 @@
 import { PropsWithChildren, FC, memo } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
 type ProgressItemProps = {
   name: string;
@@ -9,6 +10,8 @@ export const ProgressItem: FC<PropsWithChildren<ProgressItemProps>> = ({
   name,
   children,
 }) => {
+  const styles = useStyles();
+
   return (
     <View style={styles.progressItem}>
       <View style={styles.progressCircle}>{children}</View>
@@ -17,7 +20,7 @@ export const ProgressItem: FC<PropsWithChildren<ProgressItemProps>> = ({
   );
 };
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((theme) => ({
   progressItem: {
     alignItems: 'center',
   },
@@ -25,7 +28,7 @@ const styles = StyleSheet.create({
     width: 64,
     height: 64,
     borderRadius: 32,
-    backgroundColor: '#EEF2FF',
+    backgroundColor: theme.colors.background,
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 8,
@@ -33,6 +36,6 @@ const styles = StyleSheet.create({
   },
   progressText: {
     fontSize: 14,
-    color: '#4B5563',
+    color: theme.colors.grey3,
   },
-});
+}));

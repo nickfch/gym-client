@@ -1,4 +1,5 @@
 {
+  "plan-workout-btn": "Plan Workout",
   "weekly-progress-card--title": "Weekly Progress",
   "weekly-progress-card--label": "{{ completed }} of {{ targetGoal }}",
   "next-workout-card--title": "Next Workout",

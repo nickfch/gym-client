@@ -1,3 +1,6 @@
+import { ExerciseStackScreenProps } from 'src/types/navigation.d';
+import { ExerciseStack } from 'src/constants/navigation';
+
 export type ExerciseData = {
   id: string;
   title: string;
@@ -19,3 +22,6 @@ export type InteractionMetrics = {
   rangeOfMotion: number; // percentage
   tempo: 'Slow' | 'Regular' | 'Fast';
 };
+
+export type ExerciseDetailsProps =
+  {} & ExerciseStackScreenProps<ExerciseStack.ExerciseDetailsScreen>;

@@ -13,6 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { MainStack, WorkoutStack } from 'src/constants/navigation';
+import { PlanWorkoutButton } from 'src/components/PlanWorkoutButton';
 
 import { styles } from './ProfileScreen.styles';
 
@@ -265,18 +266,7 @@ export const ProfileScreen = ({
                 <Ionicons name="fitness-outline" size={16} color="#666" />
                 <Text style={styles.metaText}>{user.level} Level</Text>
               </View>
-              <TouchableOpacity
-                onPress={() => {
-                  navigate(MainStack.WorkoutStack, {
-                    screen: WorkoutStack.PlanWorkoutScreen,
-                  });
-                }}
-              >
-                <View style={styles.metaItem}>
-                  <Ionicons name="fitness-outline" size={16} color="#3b2dda" />
-                  <Text style={styles.metaText}>Plan Workout</Text>
-                </View>
-              </TouchableOpacity>
+              <PlanWorkoutButton />
             </View>
           </View>
         </View>

@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { makeStyles } from '@rneui/themed';
 
-export const styles = StyleSheet.create({
+export const useStyles = makeStyles((theme) => ({
   container: {
     flex: 1,
     marginHorizontal: 12,
@@ -15,24 +15,19 @@ export const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   exerciseItem: {
-    backgroundColor: '#fff',
+    backgroundColor: theme.colors.white,
     padding: 16,
     borderRadius: 8,
     marginBottom: 8,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 2,
-    elevation: 2,
   },
   currentExercise: {
     borderLeftWidth: 4,
-    borderLeftColor: '#0066cc',
+    borderLeftColor: theme.colors.grey5,
   },
   completedExercise: {
-    backgroundColor: '#f9fff9',
+    backgroundColor: theme.colors.primary,
   },
   exerciseInfo: {
     flex: 1,
@@ -56,4 +51,4 @@ export const styles = StyleSheet.create({
   completeButton: {
     padding: 8,
   },
-});
+}));

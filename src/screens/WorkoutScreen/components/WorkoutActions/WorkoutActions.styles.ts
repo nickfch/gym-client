@@ -7,10 +7,6 @@ export const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: '#eee',
   },
-  rowButtons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
   startButton: {
     backgroundColor: '#0066cc',
     flexDirection: 'row',
@@ -18,6 +14,10 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 16,
     borderRadius: 8,
+  },
+  rowButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   nextButton: {
     backgroundColor: '#2196F3',

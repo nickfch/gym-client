@@ -5,7 +5,7 @@ import { WorkoutScreen } from 'src/screens/WorkoutScreen';
 import { WorkoutDetailsScreen } from 'src/screens/WorkoutDetailsScreen';
 import { WorkoutPlanningScreen } from 'src/screens/WorkoutPlanningScreen';
 
-import { WorkoutStackParamList } from './WorkoutStack.types';
+import { WorkoutStackParamList } from 'src/types/navigation.d';
 
 const Stack = createNativeStackNavigator<WorkoutStackParamList>();
 
@@ -15,10 +15,24 @@ export const WorkoutStackNavigation = () => {
       <Stack.Screen
         name={WorkoutStack.WorkoutScreen}
         component={WorkoutScreen}
+        options={({
+          route: {
+            params: { name },
+          },
+        }) => ({
+          title: name,
+        })}
       />
       <Stack.Screen
         name={WorkoutStack.WorkoutDetailsScreen}
         component={WorkoutDetailsScreen}
+        options={({
+          route: {
+            params: { name },
+          },
+        }) => ({
+          title: name,
+        })}
       />
       <Stack.Screen
         name={WorkoutStack.PlanWorkoutScreen}
