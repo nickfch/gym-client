@@ -4,6 +4,7 @@ import mockedWorkouts from 'src/mocks/get-user-workouts.json';
 import { useUserFeedLogic } from './UserFeedScreen.logic';
 
 jest.mock('src/requests/hooks/useGetUserWorkouts');
+jest.mock('@react-native-async-storage/async-storage');
 
 describe('useUserFeedLogic', () => {
   beforeEach(() => {

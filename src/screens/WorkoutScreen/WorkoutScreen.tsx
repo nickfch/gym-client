@@ -7,7 +7,7 @@ import { ExerciseList } from './components/ExerciseList';
 import { WorkoutScore } from './components/WorkoutScore';
 import { WorkoutActions } from './components/WorkoutActions';
 import { useStyles } from './WorkoutScreen.styles';
-import { WorkoutScreenProps, WorkoutScreenState } from './WorkoutScreen.types';
+import { WorkoutScreenProps } from './WorkoutScreen.types';
 import { useWorkoutLogic } from './WorkoutScreen.logic';
 
 export const WorkoutScreen: React.FC<WorkoutScreenProps> = ({
@@ -20,7 +20,7 @@ export const WorkoutScreen: React.FC<WorkoutScreenProps> = ({
     isLoading,
     selectedWorkout,
     workoutCompleted,
-    workoutInProgress,
+    isWorkoutInProgress,
     exercises,
     completeWorkout,
     currentExerciseId,
@@ -38,22 +38,22 @@ export const WorkoutScreen: React.FC<WorkoutScreenProps> = ({
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="dark-content" />
-      {selectedWorkout && (
+      {selectedWorkout && !isWorkoutInProgress && (
         <WorkoutHeader
           workout={selectedWorkout as unknown as Workout}
-          inProgress={workoutInProgress}
+          inProgress={isWorkoutInProgress}
           completed={workoutCompleted}
         />
       )}
       <ExerciseList
         exercises={exercises}
         currentExerciseId={currentExerciseId}
-        workoutInProgress={workoutInProgress}
+        workoutInProgress={isWorkoutInProgress}
         toggleCompletion={toggleExerciseCompletion}
       />
       <WorkoutScore score={workoutScore} completed={workoutCompleted} />
       <WorkoutActions
-        workoutInProgress={workoutInProgress}
+        workoutInProgress={isWorkoutInProgress}
         workoutCompleted={workoutCompleted}
         onStart={startWorkout}
         onComplete={completeWorkout}

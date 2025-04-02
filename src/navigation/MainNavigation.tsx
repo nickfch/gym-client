@@ -24,7 +24,7 @@ export const MainNavigation = () => {
       <Stack.Screen
         name={MainStack.ExerciseStack}
         component={ExerciseNavigation}
-        options={{ headerShown: true, title: '' }}
+        options={{ headerShown: false, title: '' }}
       />
       <Stack.Screen
         name={MainStack.AuthStack}

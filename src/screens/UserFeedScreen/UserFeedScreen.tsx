@@ -7,11 +7,9 @@ import { NextWorkoutCard } from '../../components/NextWorkoutCard';
 import { UpcomingWorkoutsFeed } from './components/UpcomingWorkoutsCard';
 import { AchievementsCard } from './components/AchievementsCard';
 import { EmptyWorkoutsCard } from './components/EmptyWorkoutsCard';
-
 import { useStyles } from './UserFeedScreen.styles';
 import { WeeklyProgress } from './UserFeedScreen.types';
 import { mockWeeklyProgress } from './mockData'; // Import mock data
-
 import { useUserFeedLogic } from './UserFeedScreen.logic';
 
 export const UserFeedScreen = () => {

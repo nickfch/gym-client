@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import * as queryKeys from 'src/constants/queryKeys';
 import { getWorkoutById } from '../workouts';
 

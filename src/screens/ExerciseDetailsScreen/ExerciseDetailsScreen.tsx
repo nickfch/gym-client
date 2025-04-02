@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, Image, ScrollView, SafeAreaView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Video } from 'expo-av';
 import { useGetCurrentExercise } from 'src/requests/hooks/useGetCurrentExercise';
+import { useWorkoutStore } from 'src/state';
 import { ExerciseToolbar } from './components/ExerciseToolbar';
 import { styles } from './ExerciseDetailsScreen.styles';
 import { InteractionMetrics } from './ExerciseDetailsScreen.types';
-import { exerciseData, initialMetrics } from './mockData';
+import { initialMetrics } from './mockData';
 import { ExerciseDetailsProps } from './ExerciseDetailsScreen.types';
 
 export const ExerciseDetailsScreen: React.FC<ExerciseDetailsProps> = ({
@@ -13,6 +15,8 @@ export const ExerciseDetailsScreen: React.FC<ExerciseDetailsProps> = ({
     params: { exerciseId },
   },
 }) => {
+  const { goBack } = useNavigation();
+  const { completeExercise } = useWorkoutStore();
   const { data } = useGetCurrentExercise(exerciseId);
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -99,6 +103,10 @@ export const ExerciseDetailsScreen: React.FC<ExerciseDetailsProps> = ({
         onReset={resetExercise}
         onToggleTimer={toggleTimer}
         isActive={isActive}
+        onGoToNextExercise={() => {
+          completeExercise(exerciseId);
+          goBack();
+        }}
       />
     </SafeAreaView>
   );

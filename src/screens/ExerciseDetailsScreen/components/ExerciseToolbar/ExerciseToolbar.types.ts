@@ -12,4 +12,5 @@ export type ExerciseToolbarProps = {
   metrics: InteractionMetrics;
   onReset: () => void;
   onToggleTimer: () => void;
+  onGoToNextExercise: () => void;
 };

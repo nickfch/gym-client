@@ -5,7 +5,14 @@ import { ExerciseToolbarProps } from './ExerciseToolbar.types';
 import { useStyles } from './ExerciseToolbar.styles';
 
 export const ExerciseToolbar = memo<ExerciseToolbarProps>(
-  ({ timeRemaining, metrics, isActive, onToggleTimer, onReset }) => {
+  ({
+    timeRemaining,
+    metrics,
+    isActive,
+    onToggleTimer,
+    onReset,
+    onGoToNextExercise,
+  }) => {
     const styles = useStyles();
 
     const formatTime = (seconds: number): string => {
@@ -78,7 +85,10 @@ export const ExerciseToolbar = memo<ExerciseToolbarProps>(
             <Text style={styles.navButtonText}>Previous</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.navButton, styles.nextButton]}>
+          <TouchableOpacity
+            style={[styles.navButton, styles.nextButton]}
+            onPress={onGoToNextExercise}
+          >
             <Text style={styles.navButtonText}>Next</Text>
           </TouchableOpacity>
         </View>

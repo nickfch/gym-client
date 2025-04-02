@@ -16,7 +16,7 @@ import {
 export type WorkoutStackParamList = {
   [WorkoutStack.WorkoutScreen]: {
     workoutId: string;
-    name: string;
+    completedExerciseIds?: string[];
   };
   [WorkoutStack.WorkoutDetailsScreen]: {
     workoutId: string;
@@ -27,14 +27,28 @@ export type WorkoutStackParamList = {
 };
 
 export type AuthStackParamList = {
-  [AuthStack.SignInScreen]: undefined;
-  [AuthStack.SignUpScreen]: undefined;
+  [AuthStack.SignInScreen]:
+    | undefined
+    | {
+        successRedirectScreen: keyof MainStack;
+      };
+  [AuthStack.SignUpScreen]:
+    | undefined
+    | {
+        successRedirectScreen: keyof MainStack;
+      };
 };
 
 export type ExerciseStackParamList = {
+  [ExerciseStack.ExerciseCancelScreen]: undefined;
+  [ExerciseStack.ExerciseFinishedScreen]: {
+    workoutId: string;
+    name: string;
+  };
   [ExerciseStack.ExerciseDetailsScreen]: {
     exerciseId: string;
   };
+  [ExerciseStack.ExerciseScreen]: undefined;
 };
 
 export type MainBottomTabParamList = {
