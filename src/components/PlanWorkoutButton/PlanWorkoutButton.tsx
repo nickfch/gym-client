@@ -22,7 +22,7 @@ export const PlanWorkoutButton = memo<PlanWorkoutButtonProps>(
     const navigateToPlanWorkoutScreen = useCallback(() => {
       onNavigate?.();
       navigate(MainStack.WorkoutStack, {
-        screen: WorkoutStack.PlanWorkoutScreen,
+        screen: WorkoutStack.PlanWeeklyWorkoutsScreen,
       });
     }, [navigate, onNavigate]);
 

@@ -12,13 +12,10 @@ import { Ionicons } from '@expo/vector-icons';
 
 // Import components
 import { ExerciseSelectionList } from './components/ExerciseSelectionList';
-// import WeeklyCalendar from './components/WeeklyCalendar';
-// import PlanSummary from './components/PlanSummary';
-
 import { styles } from './WorkoutPlanningScreen.styles';
 
 // Import types
-import { Exercise, WorkoutPlan, DayPlan } from 'src/types';
+import { Exercise } from 'src/types';
 
 // Import mock data
 import { mockExercises } from './mockExercises';
@@ -74,7 +71,7 @@ export const WorkoutPlanningScreen = () => {
         (exercise) =>
           exercise.name.toLowerCase().includes(query) ||
           exercise.category.toLowerCase().includes(query) ||
-          exercise.equipment.toLowerCase().includes(query),
+          exercise.equipment?.toLowerCase().includes(query),
       );
     }
 
@@ -250,25 +247,6 @@ export const WorkoutPlanningScreen = () => {
             </TouchableOpacity>
           </View>
         </View>
-
-        {/* Weekly Calendar */}
-        <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Weekly Schedule</Text>
-          <Text style={styles.sectionDescription}>
-            Add your selected exercises to specific days by tapping on a day
-          </Text>
-
-          {/* <WeeklyCalendar
-            weeklyPlan={weeklyPlan}
-            onDayPress={addExercisesToDay}
-            onRemoveExercise={removeExerciseFromDay}
-          /> */}
-        </View>
-
-        {/* Plan Summary */}
-        {/* <PlanSummary weeklyPlan={weeklyPlan} /> */}
-
-        {/* Save Button */}
         <TouchableOpacity style={styles.saveButton} onPress={saveWorkoutPlan}>
           <Text style={styles.saveButtonText}>Save Workout Plan</Text>
         </TouchableOpacity>

@@ -4,6 +4,7 @@ import { RootStackParamList } from 'src/types/navigation.d';
 import { MainBottomNavigation } from './MainBottomNavigation';
 import { WorkoutStackNavigation } from './WorkoutStack';
 import { ExerciseNavigation } from './ExerciseNavigation';
+import { AuthStackNavigation } from './AuthStack';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,6 +25,11 @@ export const MainNavigation = () => {
         name={MainStack.ExerciseStack}
         component={ExerciseNavigation}
         options={{ headerShown: true, title: '' }}
+      />
+      <Stack.Screen
+        name={MainStack.AuthStack}
+        component={AuthStackNavigation}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

@@ -11,8 +11,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-
-import { MainStack, WorkoutStack } from 'src/constants/navigation';
+import { useLogout } from 'src/hooks/useLogout';
+import { AuthStack, MainStack, WorkoutStack } from 'src/constants/navigation';
 import { PlanWorkoutButton } from 'src/components/PlanWorkoutButton';
 
 import { styles } from './ProfileScreen.styles';
@@ -36,6 +36,13 @@ export const ProfileScreen = ({
   const [showGoalModal, setShowGoalModal] = useState(false);
   const [newGoal, setNewGoal] = useState('');
   const [userGoals, setUserGoals] = useState(user.goals);
+
+  const { logout } = useLogout(() => {
+    navigate(MainStack.AuthStack, {
+      screen: AuthStack.SignInScreen,
+      params: undefined,
+    });
+  });
 
   // Calculate workout stats
   const totalWorkouts = workoutData.reduce((sum, day) => sum + day.count, 0);
@@ -255,6 +262,9 @@ export const ProfileScreen = ({
 
           <View style={styles.profileInfo}>
             <Text style={styles.userName}>{user.name}</Text>
+            <TouchableOpacity onPress={logout}>
+              <Text>Logout</Text>
+            </TouchableOpacity>
             <View style={styles.userMetaInfo}>
               <View style={styles.metaItem}>
                 <Ionicons name="calendar-outline" size={16} color="#666" />

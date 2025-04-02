@@ -15,7 +15,9 @@ export const EmptyWorkoutsCard = () => {
           {t('user-feed--no-scheduled-workouts-label')}
         </Text>
       </View>
-      <PlanWorkoutButton />
+      <PlanWorkoutButton
+        btnText={t('user-feed--no-scheduled-workouts-btn-text')}
+      />
     </FeedCard>
   );
 };

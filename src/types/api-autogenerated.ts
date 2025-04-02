@@ -579,24 +579,15 @@ export interface Article {
         documentId?: string;
       }[];
     };
-    blocks?: DiscriminatorNull1 &
+    blocks?: AbstractNull1 &
       (
-        | DiscriminatorNull1ComponentMapping<
-            'shared.media',
-            SharedMediaComponent
-          >
-        | DiscriminatorNull1ComponentMapping<
-            'shared.quote',
-            SharedQuoteComponent
-          >
-        | DiscriminatorNull1ComponentMapping<
+        | AbstractNull1ComponentMapping<'shared.media', SharedMediaComponent>
+        | AbstractNull1ComponentMapping<'shared.quote', SharedQuoteComponent>
+        | AbstractNull1ComponentMapping<
             'shared.rich-text',
             SharedRichTextComponent
           >
-        | DiscriminatorNull1ComponentMapping<
-            'shared.slider',
-            SharedSliderComponent
-          >
+        | AbstractNull1ComponentMapping<'shared.slider', SharedSliderComponent>
       );
     /** @format date-time */
     createdAt?: string;
@@ -622,6 +613,478 @@ export interface Article {
 
 export interface ArticleResponse {
   data?: Article;
+  meta?: object;
+}
+
+export interface CoucheWorkoutRequest {
+  data: {
+    completed?: boolean;
+    /** @format date */
+    workout_date: string;
+    tips?: any;
+    couch_comments?: any;
+    /** @example "string or id" */
+    workout?: number | string;
+    /** @example "string or id" */
+    user?: number | string;
+    locale?: string;
+    localizations?: (number | string)[];
+  };
+}
+
+export interface CoucheWorkoutListResponse {
+  data?: CoucheWorkout[];
+  meta?: {
+    pagination?: {
+      page?: number;
+      /** @min 25 */
+      pageSize?: number;
+      /** @max 1 */
+      pageCount?: number;
+      total?: number;
+    };
+  };
+}
+
+export interface CoucheWorkout {
+  id?: number;
+  documentId?: string;
+  completed?: boolean;
+  /** @format date */
+  workout_date: string;
+  tips?: any;
+  couch_comments?: any;
+  workout?: {
+    id?: number;
+    documentId?: string;
+    name?: string;
+    duration?: number;
+    description?: string;
+    difficulty?: number;
+    exercises?: {
+      id?: number;
+      documentId?: string;
+      name?: string;
+      category?: CoucheWorkoutCategoryEnum;
+      sets?: number;
+      muscle_group?: CoucheWorkoutMuscleGroupEnum;
+      description?: string;
+      equipment?: CoucheWorkoutEquipmentEnum;
+      rest_time?: number;
+      workouts?: {
+        id?: number;
+        documentId?: string;
+      }[];
+      video_example?: {
+        id?: number;
+        documentId?: string;
+        name?: string;
+        alternativeText?: string;
+        caption?: string;
+        width?: number;
+        height?: number;
+        formats?: any;
+        hash?: string;
+        ext?: string;
+        mime?: string;
+        /** @format float */
+        size?: number;
+        url?: string;
+        previewUrl?: string;
+        provider?: string;
+        provider_metadata?: any;
+        related?: {
+          id?: number;
+          documentId?: string;
+        }[];
+        folder?: {
+          id?: number;
+          documentId?: string;
+          name?: string;
+          pathId?: number;
+          parent?: {
+            id?: number;
+            documentId?: string;
+          };
+          children?: {
+            id?: number;
+            documentId?: string;
+          }[];
+          files?: {
+            id?: number;
+            documentId?: string;
+            name?: string;
+            alternativeText?: string;
+            caption?: string;
+            width?: number;
+            height?: number;
+            formats?: any;
+            hash?: string;
+            ext?: string;
+            mime?: string;
+            /** @format float */
+            size?: number;
+            url?: string;
+            previewUrl?: string;
+            provider?: string;
+            provider_metadata?: any;
+            related?: {
+              id?: number;
+              documentId?: string;
+            }[];
+            folder?: {
+              id?: number;
+              documentId?: string;
+            };
+            folderPath?: string;
+            /** @format date-time */
+            createdAt?: string;
+            /** @format date-time */
+            updatedAt?: string;
+            /** @format date-time */
+            publishedAt?: string;
+            createdBy?: {
+              id?: number;
+              documentId?: string;
+              firstname?: string;
+              lastname?: string;
+              username?: string;
+              /** @format email */
+              email?: string;
+              resetPasswordToken?: string;
+              registrationToken?: string;
+              isActive?: boolean;
+              roles?: {
+                id?: number;
+                documentId?: string;
+                name?: string;
+                code?: string;
+                description?: string;
+                users?: {
+                  id?: number;
+                  documentId?: string;
+                }[];
+                permissions?: {
+                  id?: number;
+                  documentId?: string;
+                  action?: string;
+                  actionParameters?: any;
+                  subject?: string;
+                  properties?: any;
+                  conditions?: any;
+                  role?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  /** @format date-time */
+                  createdAt?: string;
+                  /** @format date-time */
+                  updatedAt?: string;
+                  /** @format date-time */
+                  publishedAt?: string;
+                  createdBy?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  updatedBy?: {
+                    id?: number;
+                    documentId?: string;
+                  };
+                  locale?: string;
+                  localizations?: {
+                    id?: number;
+                    documentId?: string;
+                  }[];
+                }[];
+                /** @format date-time */
+                createdAt?: string;
+                /** @format date-time */
+                updatedAt?: string;
+                /** @format date-time */
+                publishedAt?: string;
+                createdBy?: {
+                  id?: number;
+                  documentId?: string;
+                };
+                updatedBy?: {
+                  id?: number;
+                  documentId?: string;
+                };
+                locale?: string;
+                localizations?: {
+                  id?: number;
+                  documentId?: string;
+                }[];
+              }[];
+              blocked?: boolean;
+              preferedLanguage?: string;
+              /** @format date-time */
+              createdAt?: string;
+              /** @format date-time */
+              updatedAt?: string;
+              /** @format date-time */
+              publishedAt?: string;
+              createdBy?: {
+                id?: number;
+                documentId?: string;
+              };
+              updatedBy?: {
+                id?: number;
+                documentId?: string;
+              };
+              locale?: string;
+              localizations?: {
+                id?: number;
+                documentId?: string;
+              }[];
+            };
+            updatedBy?: {
+              id?: number;
+              documentId?: string;
+            };
+            locale?: string;
+            localizations?: {
+              id?: number;
+              documentId?: string;
+            }[];
+          }[];
+          path?: string;
+          /** @format date-time */
+          createdAt?: string;
+          /** @format date-time */
+          updatedAt?: string;
+          /** @format date-time */
+          publishedAt?: string;
+          createdBy?: {
+            id?: number;
+            documentId?: string;
+          };
+          updatedBy?: {
+            id?: number;
+            documentId?: string;
+          };
+          locale?: string;
+          localizations?: {
+            id?: number;
+            documentId?: string;
+          }[];
+        };
+        folderPath?: string;
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        /** @format date-time */
+        publishedAt?: string;
+        createdBy?: {
+          id?: number;
+          documentId?: string;
+        };
+        updatedBy?: {
+          id?: number;
+          documentId?: string;
+        };
+        locale?: string;
+        localizations?: {
+          id?: number;
+          documentId?: string;
+        }[];
+      };
+      tips?: any;
+      steps?: string;
+      /** @format date-time */
+      createdAt?: string;
+      /** @format date-time */
+      updatedAt?: string;
+      /** @format date-time */
+      publishedAt?: string;
+      createdBy?: {
+        id?: number;
+        documentId?: string;
+      };
+      updatedBy?: {
+        id?: number;
+        documentId?: string;
+      };
+      locale?: string;
+      localizations?: {
+        id?: number;
+        documentId?: string;
+      }[];
+    }[];
+    type?: CoucheWorkoutTypeEnum;
+    couche_workouts?: {
+      id?: number;
+      documentId?: string;
+      completed?: boolean;
+      /** @format date */
+      workout_date?: string;
+      tips?: any;
+      couch_comments?: any;
+      workout?: {
+        id?: number;
+        documentId?: string;
+      };
+      user?: {
+        id?: number;
+        documentId?: string;
+        username?: string;
+        /** @format email */
+        email?: string;
+        provider?: string;
+        resetPasswordToken?: string;
+        confirmationToken?: string;
+        confirmed?: boolean;
+        blocked?: boolean;
+        role?: {
+          id?: number;
+          documentId?: string;
+          name?: string;
+          description?: string;
+          type?: string;
+          permissions?: {
+            id?: number;
+            documentId?: string;
+            action?: string;
+            role?: {
+              id?: number;
+              documentId?: string;
+            };
+            /** @format date-time */
+            createdAt?: string;
+            /** @format date-time */
+            updatedAt?: string;
+            /** @format date-time */
+            publishedAt?: string;
+            createdBy?: {
+              id?: number;
+              documentId?: string;
+            };
+            updatedBy?: {
+              id?: number;
+              documentId?: string;
+            };
+            locale?: string;
+            localizations?: {
+              id?: number;
+              documentId?: string;
+            }[];
+          }[];
+          users?: {
+            id?: number;
+            documentId?: string;
+          }[];
+          /** @format date-time */
+          createdAt?: string;
+          /** @format date-time */
+          updatedAt?: string;
+          /** @format date-time */
+          publishedAt?: string;
+          createdBy?: {
+            id?: number;
+            documentId?: string;
+          };
+          updatedBy?: {
+            id?: number;
+            documentId?: string;
+          };
+          locale?: string;
+          localizations?: {
+            id?: number;
+            documentId?: string;
+          }[];
+        };
+        couche_workouts?: {
+          id?: number;
+          documentId?: string;
+        }[];
+        /** @format date-time */
+        createdAt?: string;
+        /** @format date-time */
+        updatedAt?: string;
+        /** @format date-time */
+        publishedAt?: string;
+        createdBy?: {
+          id?: number;
+          documentId?: string;
+        };
+        updatedBy?: {
+          id?: number;
+          documentId?: string;
+        };
+        locale?: string;
+        localizations?: {
+          id?: number;
+          documentId?: string;
+        }[];
+      };
+      /** @format date-time */
+      createdAt?: string;
+      /** @format date-time */
+      updatedAt?: string;
+      /** @format date-time */
+      publishedAt?: string;
+      createdBy?: {
+        id?: number;
+        documentId?: string;
+      };
+      updatedBy?: {
+        id?: number;
+        documentId?: string;
+      };
+      locale?: string;
+      localizations?: {
+        id?: number;
+        documentId?: string;
+      }[];
+    }[];
+    /** @format date-time */
+    createdAt?: string;
+    /** @format date-time */
+    updatedAt?: string;
+    /** @format date-time */
+    publishedAt?: string;
+    createdBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    updatedBy?: {
+      id?: number;
+      documentId?: string;
+    };
+    locale?: string;
+    localizations?: {
+      id?: number;
+      documentId?: string;
+    }[];
+  };
+  user?: {
+    id?: number;
+    documentId?: string;
+  };
+  /** @format date-time */
+  createdAt?: string;
+  /** @format date-time */
+  updatedAt?: string;
+  /** @format date-time */
+  publishedAt?: string;
+  createdBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  updatedBy?: {
+    id?: number;
+    documentId?: string;
+  };
+  locale?: string;
+  localizations?: {
+    id?: number;
+    documentId?: string;
+  }[];
+}
+
+export interface CoucheWorkoutResponse {
+  data?: CoucheWorkout;
   meta?: object;
 }
 
@@ -927,13 +1390,19 @@ export interface Exercise {
       }[];
     }[];
     type?: ExerciseTypeEnum;
-    user_workouts?: {
+    couche_workouts?: {
       id?: number;
       documentId?: string;
-      /** @format date */
-      date?: string;
       completed?: boolean;
-      users?: {
+      /** @format date */
+      workout_date?: string;
+      tips?: any;
+      couch_comments?: any;
+      workout?: {
+        id?: number;
+        documentId?: string;
+      };
+      user?: {
         id?: number;
         documentId?: string;
         username?: string;
@@ -1002,7 +1471,7 @@ export interface Exercise {
             documentId?: string;
           }[];
         };
-        user_workouts?: {
+        couche_workouts?: {
           id?: number;
           documentId?: string;
         }[];
@@ -1025,10 +1494,6 @@ export interface Exercise {
           id?: number;
           documentId?: string;
         }[];
-      };
-      workout?: {
-        id?: number;
-        documentId?: string;
       };
       /** @format date-time */
       createdAt?: string;
@@ -1540,472 +2005,6 @@ export interface SharedSeoComponent {
   };
 }
 
-export interface UserWorkoutRequest {
-  data: {
-    /** @format date */
-    date?: string;
-    completed?: boolean;
-    /** @example "string or id" */
-    users?: number | string;
-    /** @example "string or id" */
-    workout?: number | string;
-    locale?: string;
-    localizations?: (number | string)[];
-  };
-}
-
-export interface UserWorkoutListResponse {
-  data?: UserWorkout[];
-  meta?: {
-    pagination?: {
-      page?: number;
-      /** @min 25 */
-      pageSize?: number;
-      /** @max 1 */
-      pageCount?: number;
-      total?: number;
-    };
-  };
-}
-
-export interface UserWorkout {
-  id?: number;
-  documentId?: string;
-  /** @format date */
-  date?: string;
-  completed?: boolean;
-  users?: {
-    id?: number;
-    documentId?: string;
-    username?: string;
-    /** @format email */
-    email?: string;
-    provider?: string;
-    resetPasswordToken?: string;
-    confirmationToken?: string;
-    confirmed?: boolean;
-    blocked?: boolean;
-    role?: {
-      id?: number;
-      documentId?: string;
-      name?: string;
-      description?: string;
-      type?: string;
-      permissions?: {
-        id?: number;
-        documentId?: string;
-        action?: string;
-        role?: {
-          id?: number;
-          documentId?: string;
-        };
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-          firstname?: string;
-          lastname?: string;
-          username?: string;
-          /** @format email */
-          email?: string;
-          resetPasswordToken?: string;
-          registrationToken?: string;
-          isActive?: boolean;
-          roles?: {
-            id?: number;
-            documentId?: string;
-            name?: string;
-            code?: string;
-            description?: string;
-            users?: {
-              id?: number;
-              documentId?: string;
-            }[];
-            permissions?: {
-              id?: number;
-              documentId?: string;
-              action?: string;
-              actionParameters?: any;
-              subject?: string;
-              properties?: any;
-              conditions?: any;
-              role?: {
-                id?: number;
-                documentId?: string;
-              };
-              /** @format date-time */
-              createdAt?: string;
-              /** @format date-time */
-              updatedAt?: string;
-              /** @format date-time */
-              publishedAt?: string;
-              createdBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              updatedBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              locale?: string;
-              localizations?: {
-                id?: number;
-                documentId?: string;
-              }[];
-            }[];
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          }[];
-          blocked?: boolean;
-          preferedLanguage?: string;
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      }[];
-      users?: {
-        id?: number;
-        documentId?: string;
-      }[];
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    };
-    user_workouts?: {
-      id?: number;
-      documentId?: string;
-      /** @format date */
-      date?: string;
-      completed?: boolean;
-      users?: {
-        id?: number;
-        documentId?: string;
-      };
-      workout?: {
-        id?: number;
-        documentId?: string;
-        name?: string;
-        duration?: number;
-        description?: string;
-        difficulty?: number;
-        exercises?: {
-          id?: number;
-          documentId?: string;
-          name?: string;
-          category?: UserWorkoutCategoryEnum;
-          sets?: number;
-          muscle_group?: UserWorkoutMuscleGroupEnum;
-          description?: string;
-          equipment?: UserWorkoutEquipmentEnum;
-          rest_time?: number;
-          workouts?: {
-            id?: number;
-            documentId?: string;
-          }[];
-          video_example?: {
-            id?: number;
-            documentId?: string;
-            name?: string;
-            alternativeText?: string;
-            caption?: string;
-            width?: number;
-            height?: number;
-            formats?: any;
-            hash?: string;
-            ext?: string;
-            mime?: string;
-            /** @format float */
-            size?: number;
-            url?: string;
-            previewUrl?: string;
-            provider?: string;
-            provider_metadata?: any;
-            related?: {
-              id?: number;
-              documentId?: string;
-            }[];
-            folder?: {
-              id?: number;
-              documentId?: string;
-              name?: string;
-              pathId?: number;
-              parent?: {
-                id?: number;
-                documentId?: string;
-              };
-              children?: {
-                id?: number;
-                documentId?: string;
-              }[];
-              files?: {
-                id?: number;
-                documentId?: string;
-                name?: string;
-                alternativeText?: string;
-                caption?: string;
-                width?: number;
-                height?: number;
-                formats?: any;
-                hash?: string;
-                ext?: string;
-                mime?: string;
-                /** @format float */
-                size?: number;
-                url?: string;
-                previewUrl?: string;
-                provider?: string;
-                provider_metadata?: any;
-                related?: {
-                  id?: number;
-                  documentId?: string;
-                }[];
-                folder?: {
-                  id?: number;
-                  documentId?: string;
-                };
-                folderPath?: string;
-                /** @format date-time */
-                createdAt?: string;
-                /** @format date-time */
-                updatedAt?: string;
-                /** @format date-time */
-                publishedAt?: string;
-                createdBy?: {
-                  id?: number;
-                  documentId?: string;
-                };
-                updatedBy?: {
-                  id?: number;
-                  documentId?: string;
-                };
-                locale?: string;
-                localizations?: {
-                  id?: number;
-                  documentId?: string;
-                }[];
-              }[];
-              path?: string;
-              /** @format date-time */
-              createdAt?: string;
-              /** @format date-time */
-              updatedAt?: string;
-              /** @format date-time */
-              publishedAt?: string;
-              createdBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              updatedBy?: {
-                id?: number;
-                documentId?: string;
-              };
-              locale?: string;
-              localizations?: {
-                id?: number;
-                documentId?: string;
-              }[];
-            };
-            folderPath?: string;
-            /** @format date-time */
-            createdAt?: string;
-            /** @format date-time */
-            updatedAt?: string;
-            /** @format date-time */
-            publishedAt?: string;
-            createdBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            updatedBy?: {
-              id?: number;
-              documentId?: string;
-            };
-            locale?: string;
-            localizations?: {
-              id?: number;
-              documentId?: string;
-            }[];
-          };
-          tips?: any;
-          steps?: string;
-          /** @format date-time */
-          createdAt?: string;
-          /** @format date-time */
-          updatedAt?: string;
-          /** @format date-time */
-          publishedAt?: string;
-          createdBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          updatedBy?: {
-            id?: number;
-            documentId?: string;
-          };
-          locale?: string;
-          localizations?: {
-            id?: number;
-            documentId?: string;
-          }[];
-        }[];
-        type?: UserWorkoutTypeEnum;
-        user_workouts?: {
-          id?: number;
-          documentId?: string;
-        }[];
-        /** @format date-time */
-        createdAt?: string;
-        /** @format date-time */
-        updatedAt?: string;
-        /** @format date-time */
-        publishedAt?: string;
-        createdBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        updatedBy?: {
-          id?: number;
-          documentId?: string;
-        };
-        locale?: string;
-        localizations?: {
-          id?: number;
-          documentId?: string;
-        }[];
-      };
-      /** @format date-time */
-      createdAt?: string;
-      /** @format date-time */
-      updatedAt?: string;
-      /** @format date-time */
-      publishedAt?: string;
-      createdBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      updatedBy?: {
-        id?: number;
-        documentId?: string;
-      };
-      locale?: string;
-      localizations?: {
-        id?: number;
-        documentId?: string;
-      }[];
-    }[];
-    /** @format date-time */
-    createdAt?: string;
-    /** @format date-time */
-    updatedAt?: string;
-    /** @format date-time */
-    publishedAt?: string;
-    createdBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    updatedBy?: {
-      id?: number;
-      documentId?: string;
-    };
-    locale?: string;
-    localizations?: {
-      id?: number;
-      documentId?: string;
-    }[];
-  };
-  workout?: {
-    id?: number;
-    documentId?: string;
-  };
-  /** @format date-time */
-  createdAt?: string;
-  /** @format date-time */
-  updatedAt?: string;
-  /** @format date-time */
-  publishedAt?: string;
-  createdBy?: {
-    id?: number;
-    documentId?: string;
-  };
-  updatedBy?: {
-    id?: number;
-    documentId?: string;
-  };
-  locale?: string;
-  localizations?: {
-    id?: number;
-    documentId?: string;
-  }[];
-}
-
-export interface UserWorkoutResponse {
-  data?: UserWorkout;
-  meta?: object;
-}
-
 export interface WorkoutRequest {
   data: {
     name: string;
@@ -2014,7 +2013,7 @@ export interface WorkoutRequest {
     difficulty: number;
     exercises?: (number | string)[];
     type: WorkoutRequestTypeEnum;
-    user_workouts?: (number | string)[];
+    couche_workouts?: (number | string)[];
     locale?: string;
     localizations?: (number | string)[];
   };
@@ -2063,13 +2062,19 @@ export interface Workout {
         documentId?: string;
       }[];
       type?: WorkoutTypeEnum;
-      user_workouts?: {
+      couche_workouts?: {
         id?: number;
         documentId?: string;
-        /** @format date */
-        date?: string;
         completed?: boolean;
-        users?: {
+        /** @format date */
+        workout_date?: string;
+        tips?: any;
+        couch_comments?: any;
+        workout?: {
+          id?: number;
+          documentId?: string;
+        };
+        user?: {
           id?: number;
           documentId?: string;
           username?: string;
@@ -2229,7 +2234,7 @@ export interface Workout {
               documentId?: string;
             }[];
           };
-          user_workouts?: {
+          couche_workouts?: {
             id?: number;
             documentId?: string;
           }[];
@@ -2252,10 +2257,6 @@ export interface Workout {
             id?: number;
             documentId?: string;
           }[];
-        };
-        workout?: {
-          id?: number;
-          documentId?: string;
         };
         /** @format date-time */
         createdAt?: string;
@@ -2444,7 +2445,7 @@ export interface Workout {
     }[];
   }[];
   type: WorkoutTypeEnum1;
-  user_workouts?: {
+  couche_workouts?: {
     id?: number;
     documentId?: string;
   }[];
@@ -2621,16 +2622,96 @@ type PolymorphNullComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
 
-type DiscriminatorNull1 = (
+type AbstractNull1 = (
   | SharedMediaComponent
   | SharedQuoteComponent
   | SharedRichTextComponent
   | SharedSliderComponent
 )[];
 
-type DiscriminatorNull1ComponentMapping<Key, Type> = {
+type AbstractNull1ComponentMapping<Key, Type> = {
   __component: Key;
 } & Type;
+
+export type CoucheWorkoutCategoryEnum =
+  | 'Strength'
+  | 'Cardio'
+  | 'Flexibility'
+  | 'Balance'
+  | 'Endurance'
+  | 'Power'
+  | 'Speed'
+  | 'Agility'
+  | 'Mobility'
+  | 'Recovery';
+
+export type CoucheWorkoutMuscleGroupEnum =
+  | 'Chest'
+  | 'Back'
+  | 'Shoulders'
+  | 'Biceps'
+  | 'Triceps'
+  | 'Forearms'
+  | 'Abs'
+  | 'Obliques'
+  | 'Glutes'
+  | 'Quadriceps'
+  | 'Hamstrings'
+  | 'Calves'
+  | 'Traps'
+  | 'Lats'
+  | 'Lower Back'
+  | 'Hip Flexors';
+
+export type CoucheWorkoutEquipmentEnum =
+  | 'Treadmill'
+  | 'Elliptical Trainer'
+  | 'Stationary Bike'
+  | 'Rowing Machine'
+  | 'Stair Climber'
+  | 'Dumbbells'
+  | 'Barbells'
+  | 'Kettlebells'
+  | 'Weight Plates'
+  | 'Resistance Bands'
+  | 'Medicine Ball'
+  | 'Slam Ball'
+  | 'Sandbag'
+  | 'Battle Ropes'
+  | 'Jump Rope'
+  | 'Pull-up Bar'
+  | 'Dip Station'
+  | 'Power Rack'
+  | 'Squat Rack'
+  | 'Smith Machine'
+  | 'Bench Press'
+  | 'Adjustable Bench'
+  | 'Leg Press Machine'
+  | 'Hack Squat Machine'
+  | 'Cable Machine'
+  | 'Lat Pulldown Machine'
+  | 'Seated Row Machine'
+  | 'Chest Press Machine'
+  | 'Shoulder Press Machine'
+  | 'Leg Curl Machine'
+  | 'Leg Extension Machine'
+  | 'Calf Raise Machine'
+  | 'Ab Roller'
+  | 'Hyperextension Bench'
+  | 'Punching Bag'
+  | 'Speed Bag'
+  | 'Plyometric Box'
+  | 'TRX Suspension Trainer'
+  | 'Foam Roller'
+  | 'Yoga Mat'
+  | 'No Need';
+
+export type CoucheWorkoutTypeEnum =
+  | 'Upper Body'
+  | 'Lower Body'
+  | 'Core'
+  | 'Full-Body'
+  | 'Cardio';
 
 export type ExerciseRequestCategoryEnum =
   | 'Strength'
@@ -2858,86 +2939,6 @@ export type ExerciseTypeEnum =
   | 'Full-Body'
   | 'Cardio';
 
-export type UserWorkoutCategoryEnum =
-  | 'Strength'
-  | 'Cardio'
-  | 'Flexibility'
-  | 'Balance'
-  | 'Endurance'
-  | 'Power'
-  | 'Speed'
-  | 'Agility'
-  | 'Mobility'
-  | 'Recovery';
-
-export type UserWorkoutMuscleGroupEnum =
-  | 'Chest'
-  | 'Back'
-  | 'Shoulders'
-  | 'Biceps'
-  | 'Triceps'
-  | 'Forearms'
-  | 'Abs'
-  | 'Obliques'
-  | 'Glutes'
-  | 'Quadriceps'
-  | 'Hamstrings'
-  | 'Calves'
-  | 'Traps'
-  | 'Lats'
-  | 'Lower Back'
-  | 'Hip Flexors';
-
-export type UserWorkoutEquipmentEnum =
-  | 'Treadmill'
-  | 'Elliptical Trainer'
-  | 'Stationary Bike'
-  | 'Rowing Machine'
-  | 'Stair Climber'
-  | 'Dumbbells'
-  | 'Barbells'
-  | 'Kettlebells'
-  | 'Weight Plates'
-  | 'Resistance Bands'
-  | 'Medicine Ball'
-  | 'Slam Ball'
-  | 'Sandbag'
-  | 'Battle Ropes'
-  | 'Jump Rope'
-  | 'Pull-up Bar'
-  | 'Dip Station'
-  | 'Power Rack'
-  | 'Squat Rack'
-  | 'Smith Machine'
-  | 'Bench Press'
-  | 'Adjustable Bench'
-  | 'Leg Press Machine'
-  | 'Hack Squat Machine'
-  | 'Cable Machine'
-  | 'Lat Pulldown Machine'
-  | 'Seated Row Machine'
-  | 'Chest Press Machine'
-  | 'Shoulder Press Machine'
-  | 'Leg Curl Machine'
-  | 'Leg Extension Machine'
-  | 'Calf Raise Machine'
-  | 'Ab Roller'
-  | 'Hyperextension Bench'
-  | 'Punching Bag'
-  | 'Speed Bag'
-  | 'Plyometric Box'
-  | 'TRX Suspension Trainer'
-  | 'Foam Roller'
-  | 'Yoga Mat'
-  | 'No Need';
-
-export type UserWorkoutTypeEnum =
-  | 'Upper Body'
-  | 'Lower Body'
-  | 'Core'
-  | 'Full-Body'
-  | 'Cardio';
-
 export type WorkoutRequestTypeEnum =
   | 'Upper Body'
   | 'Lower Body'
@@ -3096,6 +3097,40 @@ export type PutArticlesIdData = ArticleResponse;
 /** @format int64 */
 export type DeleteArticlesIdData = number;
 
+export interface GetCoucheWorkoutsParams {
+  /** Sort by attributes ascending (asc) or descending (desc) */
+  sort?: string;
+  /** Return page/pageSize (default: true) */
+  'pagination[withCount]'?: boolean;
+  /** Page number (default: 0) */
+  'pagination[page]'?: number;
+  /** Page size (default: 25) */
+  'pagination[pageSize]'?: number;
+  /** Offset value (default: 0) */
+  'pagination[start]'?: number;
+  /** Number of entities to return (default: 25) */
+  'pagination[limit]'?: number;
+  /** Fields to return (ex: title,author) */
+  fields?: string;
+  /** Relations to return */
+  populate?: string;
+  /** Filters to apply */
+  filters?: Record<string, any>;
+  /** Locale to apply */
+  locale?: string;
+}
+
+export type GetCoucheWorkoutsData = CoucheWorkoutListResponse;
+
+export type PostCoucheWorkoutsData = CoucheWorkoutResponse;
+
+export type GetCoucheWorkoutsIdData = CoucheWorkoutResponse;
+
+export type PutCoucheWorkoutsIdData = CoucheWorkoutResponse;
+
+/** @format int64 */
+export type DeleteCoucheWorkoutsIdData = number;
+
 export interface GetExercisesParams {
   /** Sort by attributes ascending (asc) or descending (desc) */
   sort?: string;
@@ -3159,40 +3194,6 @@ export type PutGlobalData = GlobalResponse;
 
 /** @format int64 */
 export type DeleteGlobalData = number;
-
-export interface GetUserWorkoutsParams {
-  /** Sort by attributes ascending (asc) or descending (desc) */
-  sort?: string;
-  /** Return page/pageSize (default: true) */
-  'pagination[withCount]'?: boolean;
-  /** Page number (default: 0) */
-  'pagination[page]'?: number;
-  /** Page size (default: 25) */
-  'pagination[pageSize]'?: number;
-  /** Offset value (default: 0) */
-  'pagination[start]'?: number;
-  /** Number of entities to return (default: 25) */
-  'pagination[limit]'?: number;
-  /** Fields to return (ex: title,author) */
-  fields?: string;
-  /** Relations to return */
-  populate?: string;
-  /** Filters to apply */
-  filters?: Record<string, any>;
-  /** Locale to apply */
-  locale?: string;
-}
-
-export type GetUserWorkoutsData = UserWorkoutListResponse;
-
-export type PostUserWorkoutsData = UserWorkoutResponse;
-
-export type GetUserWorkoutsIdData = UserWorkoutResponse;
-
-export type PutUserWorkoutsIdData = UserWorkoutResponse;
-
-/** @format int64 */
-export type DeleteUserWorkoutsIdData = number;
 
 export interface GetWorkoutsParams {
   /** Sort by attributes ascending (asc) or descending (desc) */
@@ -3557,6 +3558,110 @@ export namespace Article {
   }
 }
 
+export namespace CoucheWorkout {
+  /**
+   * No description
+   * @tags Couche-workout
+   * @name GetCoucheWorkouts
+   * @request GET:/couche-workouts
+   * @secure
+   */
+  export namespace GetCoucheWorkouts {
+    export type RequestParams = {};
+    export type RequestQuery = {
+      /** Sort by attributes ascending (asc) or descending (desc) */
+      sort?: string;
+      /** Return page/pageSize (default: true) */
+      'pagination[withCount]'?: boolean;
+      /** Page number (default: 0) */
+      'pagination[page]'?: number;
+      /** Page size (default: 25) */
+      'pagination[pageSize]'?: number;
+      /** Offset value (default: 0) */
+      'pagination[start]'?: number;
+      /** Number of entities to return (default: 25) */
+      'pagination[limit]'?: number;
+      /** Fields to return (ex: title,author) */
+      fields?: string;
+      /** Relations to return */
+      populate?: string;
+      /** Filters to apply */
+      filters?: Record<string, any>;
+      /** Locale to apply */
+      locale?: string;
+    };
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = GetCoucheWorkoutsData;
+  }
+
+  /**
+   * No description
+   * @tags Couche-workout
+   * @name PostCoucheWorkouts
+   * @request POST:/couche-workouts
+   * @secure
+   */
+  export namespace PostCoucheWorkouts {
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = CoucheWorkoutRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = PostCoucheWorkoutsData;
+  }
+
+  /**
+   * No description
+   * @tags Couche-workout
+   * @name GetCoucheWorkoutsId
+   * @request GET:/couche-workouts/{id}
+   * @secure
+   */
+  export namespace GetCoucheWorkoutsId {
+    export type RequestParams = {
+      id: number;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = GetCoucheWorkoutsIdData;
+  }
+
+  /**
+   * No description
+   * @tags Couche-workout
+   * @name PutCoucheWorkoutsId
+   * @request PUT:/couche-workouts/{id}
+   * @secure
+   */
+  export namespace PutCoucheWorkoutsId {
+    export type RequestParams = {
+      id: number;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = CoucheWorkoutRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = PutCoucheWorkoutsIdData;
+  }
+
+  /**
+   * No description
+   * @tags Couche-workout
+   * @name DeleteCoucheWorkoutsId
+   * @request DELETE:/couche-workouts/{id}
+   * @secure
+   */
+  export namespace DeleteCoucheWorkoutsId {
+    export type RequestParams = {
+      id: number;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = DeleteCoucheWorkoutsIdData;
+  }
+}
+
 export namespace Exercise {
   /**
    * No description
@@ -3726,110 +3831,6 @@ export namespace Global {
     export type RequestBody = never;
     export type RequestHeaders = {};
     export type ResponseBody = DeleteGlobalData;
-  }
-}
-
-export namespace UserWorkout {
-  /**
-   * No description
-   * @tags User-workout
-   * @name GetUserWorkouts
-   * @request GET:/user-workouts
-   * @secure
-   */
-  export namespace GetUserWorkouts {
-    export type RequestParams = {};
-    export type RequestQuery = {
-      /** Sort by attributes ascending (asc) or descending (desc) */
-      sort?: string;
-      /** Return page/pageSize (default: true) */
-      'pagination[withCount]'?: boolean;
-      /** Page number (default: 0) */
-      'pagination[page]'?: number;
-      /** Page size (default: 25) */
-      'pagination[pageSize]'?: number;
-      /** Offset value (default: 0) */
-      'pagination[start]'?: number;
-      /** Number of entities to return (default: 25) */
-      'pagination[limit]'?: number;
-      /** Fields to return (ex: title,author) */
-      fields?: string;
-      /** Relations to return */
-      populate?: string;
-      /** Filters to apply */
-      filters?: Record<string, any>;
-      /** Locale to apply */
-      locale?: string;
-    };
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = GetUserWorkoutsData;
-  }
-
-  /**
-   * No description
-   * @tags User-workout
-   * @name PostUserWorkouts
-   * @request POST:/user-workouts
-   * @secure
-   */
-  export namespace PostUserWorkouts {
-    export type RequestParams = {};
-    export type RequestQuery = {};
-    export type RequestBody = UserWorkoutRequest;
-    export type RequestHeaders = {};
-    export type ResponseBody = PostUserWorkoutsData;
-  }
-
-  /**
-   * No description
-   * @tags User-workout
-   * @name GetUserWorkoutsId
-   * @request GET:/user-workouts/{id}
-   * @secure
-   */
-  export namespace GetUserWorkoutsId {
-    export type RequestParams = {
-      id: number;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = GetUserWorkoutsIdData;
-  }
-
-  /**
-   * No description
-   * @tags User-workout
-   * @name PutUserWorkoutsId
-   * @request PUT:/user-workouts/{id}
-   * @secure
-   */
-  export namespace PutUserWorkoutsId {
-    export type RequestParams = {
-      id: number;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = UserWorkoutRequest;
-    export type RequestHeaders = {};
-    export type ResponseBody = PutUserWorkoutsIdData;
-  }
-
-  /**
-   * No description
-   * @tags User-workout
-   * @name DeleteUserWorkoutsId
-   * @request DELETE:/user-workouts/{id}
-   * @secure
-   */
-  export namespace DeleteUserWorkoutsId {
-    export type RequestParams = {
-      id: number;
-    };
-    export type RequestQuery = {};
-    export type RequestBody = never;
-    export type RequestHeaders = {};
-    export type ResponseBody = DeleteUserWorkoutsIdData;
   }
 }
 

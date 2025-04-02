@@ -10,31 +10,30 @@ export const useUserFeedLogic = () => {
     () =>
       data?.data
         ?.filter(({ completed }) => completed)
-        .map(({ documentId }) => documentId) || [],
+        ?.map(({ documentId }) => documentId) || [],
     [data],
   );
 
   const normalizedData = useMemo(() => {
-    if (!data) {
-      return {
-        data: {},
-        items: [],
-      };
+    const initValue: NormalizedWorkout = {
+      data: {},
+      items: [],
+    };
+
+    if (!data || !Array.isArray(data?.data)) {
+      return initValue;
     }
 
-    return data.data!.reduce<NormalizedWorkout>(
-      (acc, item) => {
-        return {
-          ...acc,
-          items: [...acc.items, item.documentId],
-          data: {
-            ...acc.data,
-            [item.documentId!]: item,
-          },
-        } as NormalizedWorkout;
-      },
-      { data: {}, items: [] } as NormalizedWorkout,
-    );
+    return data?.data.reduce<NormalizedWorkout>((acc, item) => {
+      return {
+        ...acc,
+        items: [...acc.items, item.documentId],
+        data: {
+          ...acc.data,
+          [item.documentId!]: item,
+        },
+      } as NormalizedWorkout;
+    }, initValue as NormalizedWorkout);
   }, [data]);
 
   const uncompletedWorkoutIds = useMemo(

@@ -50,13 +50,15 @@ export const ExerciseDetailsScreen: React.FC<ExerciseDetailsProps> = ({
     setIsActive(!isActive);
   };
 
+  if (!data?.data) return null;
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.headerContainer}>
           <Text style={styles.title}>{data?.data?.name}</Text>
           <Text style={styles.subtitle}>
-            {data?.data.category} • {data?.data.muscle_group} • Equipment:{' '}
+            {data?.data?.category} • {data?.data?.muscle_group} • Equipment:{' '}
             {data?.data?.equipment}
           </Text>
         </View>

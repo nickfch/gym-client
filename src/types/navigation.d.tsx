@@ -10,6 +10,7 @@ import {
   MainBottomTab,
   WorkoutStack,
   ExerciseStack,
+  AuthStack,
 } from 'src/constants/navigation';
 
 export type WorkoutStackParamList = {
@@ -22,6 +23,12 @@ export type WorkoutStackParamList = {
     name: string;
   };
   [WorkoutStack.PlanWorkoutScreen]: undefined;
+  [WorkoutStack.PlanWeeklyWorkoutsScreen]: undefined;
+};
+
+export type AuthStackParamList = {
+  [AuthStack.SignInScreen]: undefined;
+  [AuthStack.SignUpScreen]: undefined;
 };
 
 export type ExerciseStackParamList = {
@@ -37,6 +44,7 @@ export type MainBottomTabParamList = {
 };
 
 export type RootStackParamList = {
+  [MainStack.AuthStack]: NavigatorScreenParams<AuthStackParamList>;
   [MainStack.WorkoutStack]: NavigatorScreenParams<WorkoutStackParamList>;
   [MainStack.ExerciseStack]: NavigatorScreenParams<ExerciseStackParamList>;
   [MainStack.MainBottomTab]: undefined;

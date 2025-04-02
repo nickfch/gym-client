@@ -10,6 +10,7 @@ export enum WorkoutStack {
   WorkoutScoreScreen = 'WorkoutScoreScreen',
   FinishWorkoutScreen = 'FinishWorkoutScreen',
   WorkoutDetailsScreen = 'WorkoutDetailsScreen',
+  PlanWeeklyWorkoutsScreen = 'PlanWeeklyWorkoutsScreen',
 }
 
 export enum ExerciseStack {
@@ -26,7 +27,13 @@ export enum DrawerStack {
 }
 
 export enum MainStack {
+  AuthStack = 'AuthStack',
   MainBottomTab = 'MainBottomTab',
   ExerciseStack = 'ExerciseStack',
   WorkoutStack = 'WorkoutStack',
+}
+
+export enum AuthStack {
+  SignUpScreen = 'SignUpScreen',
+  SignInScreen = 'SignInScreen',
 }

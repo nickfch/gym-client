@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 import * as queryKeys from 'src/constants/queryKeys';
 import { UserWorkout, Error } from 'src/types';
-import { postCompleteWorkout } from '../request-workouts';
+import { postCompleteWorkout } from '../workouts';
 
 type PostCompleteWorkoutInput = {
   workoutId: string;

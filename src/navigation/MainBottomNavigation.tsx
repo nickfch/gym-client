@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, FontAwesome6 } from '@expo/vector-icons';
 import { useTheme } from '@rneui/themed';
 
+import { protectAuthComponent } from 'src/components/WithAuthProtection';
 import { MainBottomTab } from 'src/constants/navigation';
 import { UserFeedScreen } from 'src/screens/UserFeedScreen';
 import { ProfileScreen } from 'src/screens/ProfileScreen';
@@ -30,7 +31,7 @@ export const MainBottomNavigation = () => {
     >
       <TabNavigator.Screen
         name={MainBottomTab.HomeScreen}
-        component={UserFeedScreen}
+        component={protectAuthComponent(UserFeedScreen)}
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
@@ -40,7 +41,7 @@ export const MainBottomNavigation = () => {
       />
       <TabNavigator.Screen
         name={MainBottomTab.ProfileScreen}
-        component={ProfileScreen}
+        component={protectAuthComponent(ProfileScreen)}
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (

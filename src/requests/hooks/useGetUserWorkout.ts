@@ -1,6 +1,6 @@
 import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import * as queryKeys from 'src/constants/queryKeys';
-import { requestUserWorkoutById } from 'src/requests/request-workouts';
+import { requestUserWorkoutById } from 'src/requests/workouts';
 import { GetUserWorkout } from '../types';
 
 export const useGetUserWorkout = (
